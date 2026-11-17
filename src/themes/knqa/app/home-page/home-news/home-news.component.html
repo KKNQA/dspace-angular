@@ -1,0 +1,41 @@
+<div class="knqa-hero mt-ncs">
+  <div class="container py-5">
+    <div class="text-center">
+      <h1 class="knqa-hero-title">
+        {{ 'home.knqa.hero.title.line1' | translate }}<br/>
+        <span class="knqa-hero-accent">{{ 'home.knqa.hero.title.line2' | translate }}</span>
+      </h1>
+      <p class="knqa-hero-lead mx-auto">{{ 'home.knqa.hero.description' | translate }}</p>
+    </div>
+
+    <div class="knqa-hero-search mx-auto">
+      <ds-search-form
+        [inPlaceSearch]="false"
+        [large]="true"
+        brandColor="primary"
+        [searchPlaceholder]="'home.search-form.placeholder' | translate">
+      </ds-search-form>
+    </div>
+
+    <div class="knqa-hero-stats d-flex flex-wrap justify-content-center" aria-live="polite">
+      @if (totalItems$ | async; as totalItems) {
+        <div class="knqa-stat">
+          <span class="knqa-stat-number">{{ totalItems | number }}</span>
+          <span class="knqa-stat-label">{{ 'home.knqa.stats.publications' | translate }}</span>
+        </div>
+      }
+      @if (totalCommunities$ | async; as totalCommunities) {
+        <div class="knqa-stat">
+          <span class="knqa-stat-number">{{ totalCommunities | number }}</span>
+          <span class="knqa-stat-label">{{ 'home.knqa.stats.communities' | translate }}</span>
+        </div>
+      }
+      @if (totalCollections$ | async; as totalCollections) {
+        <div class="knqa-stat">
+          <span class="knqa-stat-number">{{ totalCollections | number }}</span>
+          <span class="knqa-stat-label">{{ 'home.knqa.stats.collections' | translate }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

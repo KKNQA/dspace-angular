@@ -1,0 +1,147 @@
+// KNQA theme — Bootstrap Sass variable overrides
+//
+// DSpace works with CSS variables for its own components, and has a mapping of all bootstrap Sass
+// variables to CSS equivalents (see src/styles/_bootstrap_variables_mapping.scss). However Bootstrap
+// still uses Sass variables internally, so brand-level overrides are done here. All overrides must
+// be declared BEFORE the `_variables.scss` import at the bottom of this file (base declarations use
+// `!default`, so whatever is declared first wins).
+//
+// KNQA brand palette:
+//   Primary Blue  #00286E  — navigation, primary actions, headings
+//   Primary Green #276E35  — success / verified / open-access states only
+//   Accent Gold   #D3993F  — accents, highlights, pending states
+//   Neutrals      — white, tiered light grays, near-black text
+
+/*** FONT FAMILIES ***/
+// Public Sans is self-hosted (see _fonts.scss); no CDN request at runtime.
+$font-family-sans-serif: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+/*** KNQA BRAND COLORS ***/
+$knqa-blue:        #00286E;
+$knqa-blue-dark:   #001543;
+$knqa-green:       #276E35;
+$knqa-gold:        #D3993F;
+$knqa-gold-dark:   #8A5A00; // AA-compliant gold for text on light backgrounds
+$knqa-surface:     #F8F9FA; // page background
+$knqa-surface-alt: #EFF4FF; // light blue tint container
+$knqa-divider:     #E2E8F0;
+$knqa-text:        #1A202C;
+$knqa-text-muted:  #444651;
+
+/*** SEMANTIC COLOR SCHEME ***/
+$primary:   $knqa-blue;
+$secondary: #495057;
+$success:   $knqa-green;
+$info:      #1C5D8F;
+$warning:   $knqa-gold;
+$danger:    #BA1A1A;
+$light:     $knqa-surface;
+$dark:      $knqa-blue-dark;
+
+/*** TYPE SCALE (per Stitch design system) ***/
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2;      // 32px headline-lg
+$h2-font-size: $font-size-base * 1.5;    // 24px headline-md
+$h3-font-size: $font-size-base * 1.25;   // 20px
+$h4-font-size: $font-size-base * 1.125;  // 18px
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base * 0.875;
+$headings-font-weight: 700;
+$headings-color: $knqa-text;
+$font-weight-bold: 700;
+$body-color: $knqa-text;
+$text-muted: $knqa-text-muted;
+
+/*** SHAPE — rounded language: 8px controls, 12px cards, pills for badges ***/
+$border-radius:     0.5rem;
+$border-radius-lg:  0.75rem;
+$border-radius-sm:  0.375rem;
+$border-color:      $knqa-divider;
+
+/*** LINKS ***/
+$link-color: $knqa-blue;
+$link-decoration: none;
+$link-hover-color: $knqa-blue-dark;
+$link-hover-decoration: underline;
+
+/*** ELEVATION — structural depth, no heavy shadows ***/
+$enable-shadows: false;
+$box-shadow-sm: 0 1px 2px rgba(13, 28, 46, 0.05);
+$box-shadow:    0 4px 12px rgba(13, 28, 46, 0.05);
+$box-shadow-lg: 0 10px 30px rgba(13, 28, 46, 0.08);
+
+/*** COMPONENTS ***/
+$card-border-color: $knqa-divider;
+$card-border-radius: 0.75rem;
+$card-cap-bg: #FFFFFF;
+
+$input-border-color: #CBD5E0;
+$input-focus-border-color: lighten($knqa-blue, 35%);
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(0, 40, 110, 0.15);
+$input-btn-focus-box-shadow: 0 0 0 0.2rem rgba(0, 40, 110, 0.15);
+
+$btn-font-weight: 600;
+
+$table-accent-bg: $knqa-surface;
+$table-hover-bg: $knqa-surface-alt;
+$table-border-color: $knqa-divider;
+
+$pagination-color: $knqa-blue;
+$pagination-hover-color: $knqa-blue-dark;
+$pagination-hover-bg: $knqa-surface-alt;
+$pagination-active-bg: $knqa-blue;
+$pagination-active-border-color: $knqa-blue;
+$pagination-border-color: $knqa-divider;
+$pagination-disabled-bg: #FFFFFF;
+
+$badge-font-weight: 600;
+$badge-padding-x: 0.65em;
+$badge-padding-y: 0.35em;
+
+$breadcrumb-bg: transparent;
+$breadcrumb-divider: quote('›');
+
+$dropdown-border-color: $knqa-divider;
+$dropdown-link-hover-bg: $knqa-surface-alt;
+
+$navbar-dark-color: rgba(255, 255, 255, 0.75);
+$navbar-dark-hover-color: #FFFFFF;
+$navbar-light-color: $knqa-text-muted;
+$navbar-light-hover-color: $knqa-blue;
+
+$min-contrast-ratio: 3;
+
+// 1280px content container on wide screens (Stitch fixed-grid model)
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1280px,
+);
+
+/*** CUSTOM DSPACE SASS VARIABLES consumed by base styles ***/
+$ds-header-navbar-border-bottom-color: $knqa-divider;
+$ds-header-bg: #FFFFFF;
+$ds-navbar-bg: #FFFFFF;
+$ds-navbar-dropdown-bg: #FFFFFF;
+$ds-expandable-navbar-bg: #FFFFFF;
+$ds-navbar-link-color: $knqa-text-muted;
+$ds-navbar-link-color-hover: $knqa-blue;
+$ds-header-icon-color: $knqa-blue;
+$ds-header-icon-color-hover: $knqa-blue-dark;
+$ds-breadcrumb-link-color: $knqa-blue;
+$ds-breadcrumb-link-active-color: $knqa-text;
+$ds-home-news-link-color: $knqa-blue;
+$ds-admin-sidebar-bg: $knqa-blue-dark;
+$ds-admin-sidebar-active-bg: $knqa-blue;
+$ds-slider-color: $knqa-blue;
+$ds-slider-handle-color: $knqa-blue-dark;
+
+// Add new semantic colors here (you don't need to add existing semantic colors)
+@import '../../../styles/_variables.scss';
+$theme-custom-semantic-colors: (
+  accent: $knqa-gold,
+);
+$theme-colors: map-merge($theme-colors, $theme-custom-semantic-colors);

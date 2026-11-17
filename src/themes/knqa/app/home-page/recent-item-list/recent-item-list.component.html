@@ -1,0 +1,58 @@
+<ng-container *ngVar="(itemRD$ | async) as itemRD">
+  @if (itemRD?.hasSucceeded && itemRD?.payload?.page.length > 0) {
+    <div class="knqa-recent" @fadeIn>
+      <header class="knqa-recent-header text-center">
+        <h2>{{ 'home.knqa.recent.head' | translate }}</h2>
+        <p>{{ 'home.knqa.recent.description' | translate }}</p>
+      </header>
+      <div class="knqa-timeline">
+        <div class="knqa-timeline-line" aria-hidden="true"></div>
+        <ol class="knqa-timeline-list list-unstyled m-0 p-0">
+          @for (item of itemRD?.payload?.page; track item.id; let odd = $odd) {
+            <li class="knqa-timeline-item" [class.is-alt]="odd">
+              <div class="knqa-timeline-body">
+                <h3 class="knqa-timeline-title">
+                  <a [routerLink]="getItemRoute(item)">{{ getTitle(item) }}</a>
+                </h3>
+                @if (getAbstract(item)) {
+                  <p class="knqa-timeline-abstract">{{ getAbstract(item) }}</p>
+                }
+              </div>
+              <div class="knqa-timeline-dot" aria-hidden="true"></div>
+              <div class="knqa-timeline-meta">
+                <div class="knqa-timeline-when">
+                  <span class="knqa-timeline-date">
+                    @if (dateBadgeKey(item)) {
+                      {{ dateBadgeKey(item) | translate }}
+                    } @else {
+                      {{ getDepositDate(item) | date: 'MMM d, y' }}
+                    }
+                  </span>
+                  @if (hasTime(item)) {
+                    <span class="knqa-timeline-time">{{ getDepositDate(item) | date: 'shortTime' }}</span>
+                  }
+                </div>
+                @if (getAuthor(item)) {
+                  <div class="knqa-timeline-author">
+                    <i class="fas fa-user" aria-hidden="true"></i> {{ getAuthor(item) }}
+                  </div>
+                }
+              </div>
+            </li>
+          }
+        </ol>
+      </div>
+      <div class="text-center mt-5">
+        <button (click)="onLoadMore()" class="btn btn-outline-primary" role="link" tabindex="0">
+          {{ 'home.knqa.recent.view-all' | translate }}
+        </button>
+      </div>
+    </div>
+  }
+  @if (itemRD?.hasFailed) {
+    <ds-error message="{{ 'error.recent-submissions' | translate }}"></ds-error>
+  }
+  @if (!itemRD || itemRD.isLoading) {
+    <ds-loading message="{{ 'loading.recent-submissions' | translate }}"></ds-loading>
+  }
+</ng-container>

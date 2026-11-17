@@ -1,0 +1,90 @@
+:host {
+  --ds-header-navbar-border-bottom-style: solid var(--ds-header-navbar-border-bottom-height) var(--ds-header-navbar-border-bottom-color);
+  --ds-expandable-navbar-border-top-style: solid var(--ds-expandable-navbar-border-top-height) var(--ds-expandable-navbar-border-top-color);
+  --ds-expandable-navbar-height: calc(100vh - var(--ds-header-height));
+
+  // KNQA: keep the navigation fixed at the top while scrolling (Stitch "sticky navigation")
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: var(--ds-nav-z-index);
+
+  div#header-navbar-wrapper {
+    position: relative; // required by the mobile collapsible navbar
+    border-bottom: var(--ds-header-navbar-border-bottom-style); // gets covered by mobile navbar wrapper, when open
+    background-color: var(--ds-header-bg);
+
+    div#mobile-navbar-wrapper {
+      width: 100%;
+      background-color: var(--ds-expandable-navbar-bg);
+      position: absolute;
+      z-index: var(--ds-nav-z-index);
+      overflow: hidden;
+
+      nav#collapsible-mobile-navbar {
+        // Following parameters are changed by slideMobileNav animation
+        min-height: var(--ds-expandable-navbar-height);
+        height: auto;
+        border-bottom: var(--ds-header-navbar-border-bottom-style);
+      }
+    }
+  }
+
+  /* MENU ITEMS */
+
+  ::ng-deep {
+    .ds-menu-item, .ds-menu-toggler-wrapper {
+      text-decoration: none;
+    }
+
+    nav#desktop-navbar { // in header component
+      #main-site-navigation {
+        /* Desktop menu */
+
+        .ds-menu-item-wrapper, .ds-menu-item, .ds-menu-toggler-wrapper {
+          // fill navbar height (required by dropdown menus) and center content
+          display: flex;
+          align-items: center;
+          height: 100%;
+        }
+        .ds-menu-item {
+          // top-level navbar menu items: quiet gray, navy on hover, semi-bold
+          padding: var(--ds-navbar-item-vertical-padding) var(--ds-navbar-item-horizontal-padding);
+          font-weight: 600;
+          font-size: 0.9375rem;
+        }
+        .ds-menu-item, .ds-menu-toggler-wrapper {
+          color: var(--ds-navbar-link-color) !important;
+          &:hover, &:focus {
+            color: var(--ds-navbar-link-color-hover) !important;
+          }
+        }
+
+        /* desktop submenu */
+
+        .dropdown-menu {
+          border-radius: 0.5rem;
+          border-color: #E2E8F0;
+          box-shadow: 0 10px 30px rgba(13, 28, 46, 0.08);
+
+          .ds-menu-item {
+            padding: var(--ds-navbar-dropdown-item-vertical-padding) var(--ds-navbar-dropdown-item-horizontal-padding);
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    nav#collapsible-mobile-navbar { // in header-navbar-wrapper component
+      border-top: var(--ds-expandable-navbar-border-top-style);
+      padding-top: var(--ds-expandable-navbar-padding-top);
+
+      #main-site-navigation {
+        .ds-menu-item {
+          padding: var(--ds-expandable-navbar-item-vertical-padding) 0;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

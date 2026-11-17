@@ -1,0 +1,68 @@
+:host {
+  #main-site-header {
+    min-height: var(--ds-header-height);
+
+    @include media-breakpoint-up(md) {
+      height: var(--ds-header-height);
+    }
+
+    background-color: var(--ds-header-bg);
+  }
+
+  #main-site-header-container {
+    min-height: var(--ds-header-height);
+  }
+
+  img#header-logo {
+    height: var(--ds-header-logo-height);
+    width: auto;
+  }
+
+  button#navbar-toggler {
+    color: var(--ds-header-icon-color);
+
+    &:hover, &:focus {
+      color: var(--ds-header-icon-color-hover);
+    }
+  }
+
+  // "Sign in" — render the auth menu trigger as a navy pill button (Stitch design)
+  ::ng-deep ds-auth-nav-menu {
+    button.dropdownLogin {
+      background-color: var(--bs-primary);
+      color: #fff;
+      border-radius: 0.5rem;
+      padding: 0.45rem 1.25rem !important;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        background-color: var(--bs-dark);
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    // Logged-in user menu keeps a quiet icon look
+    button.dropdownLogout {
+      color: var(--bs-primary);
+      border-radius: 0.5rem;
+      padding: 0.45rem 0.6rem !important;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        background-color: #EFF4FF;
+      }
+    }
+  }
+
+  // Header utility icons (search trigger, context help, lang switch)
+  ::ng-deep {
+    ds-search-navbar .submit-icon,
+    ds-search-navbar .search-icon,
+    ds-context-help-toggle button,
+    ds-lang-switch a.nav-link {
+      color: var(--ds-header-icon-color);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<footer>
+  @if (showTopFooter) {
+    <div class="top-footer">
+      <div class="container py-5">
+        <div class="row">
+          <!-- Brand -->
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 pe-lg-5">
+            <img class="footer-logo mb-3" src="assets/knqa/images/knqa-logo-h120.png"
+                 [attr.alt]="'menu.header.image.logo' | translate"/>
+            <p class="footer-blurb mb-0">{{ 'footer.knqa.blurb' | translate }}</p>
+          </div>
+          <!-- Quick links -->
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h2 class="footer-heading h6">{{ 'footer.knqa.quicklinks.head' | translate }}</h2>
+            <ul class="list-unstyled mb-0">
+              <li><a routerLink="/search">{{ 'footer.knqa.quicklinks.search' | translate }}</a></li>
+              <li><a routerLink="/community-list">{{ 'footer.knqa.quicklinks.communities' | translate }}</a></li>
+              <li><a routerLink="/browse/title">{{ 'footer.knqa.quicklinks.browse' | translate }}</a></li>
+              @if (showSendFeedback$ | async) {
+                <li><a routerLink="info/feedback">{{ 'footer.link.feedback' | translate }}</a></li>
+              }
+            </ul>
+          </div>
+          <!-- Legal & support -->
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h2 class="footer-heading h6">{{ 'footer.knqa.legal.head' | translate }}</h2>
+            <ul class="list-unstyled mb-0">
+              <li><a routerLink="info/accessibility">{{ 'footer.link.accessibility' | translate }}</a></li>
+              @if (showPrivacyPolicy) {
+                <li><a routerLink="info/privacy">{{ 'footer.link.privacy-policy' | translate }}</a></li>
+              }
+              @if (showEndUserAgreement) {
+                <li><a routerLink="info/end-user-agreement">{{ 'footer.link.end-user-agreement' | translate }}</a></li>
+              }
+              @if (showCookieSettings) {
+                <li>
+                  <button class="btn btn-link p-0 footer-cookie-btn" type="button" (click)="openCookieSettings()">
+                    {{ 'footer.link.cookies' | translate }}
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div class="col-lg-3 col-md-6 mb-0">
+            <h2 class="footer-heading h6">{{ 'footer.knqa.contact.head' | translate }}</h2>
+            <ul class="list-unstyled footer-contact mb-0">
+              <li>{{ 'footer.knqa.contact.address1' | translate }}</li>
+              <li>{{ 'footer.knqa.contact.address2' | translate }}</li>
+              <li><a href="mailto:info@knqa.go.ke">info&#64;knqa.go.ke</a></li>
+              <li><a href="https://www.knqa.go.ke" target="_blank" rel="noopener noreferrer">www.knqa.go.ke</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Bottom bar -->
+  <div class="bottom-footer d-flex flex-column flex-md-row justify-content-center align-items-center text-white">
+    <div class="content-container align-self-center py-3">
+      <p class="m-0 text-center">
+        {{ 'footer.knqa.copyright' | translate:{year: dateObj | date:'y'} }}
+      </p>
+      <p class="m-0 text-center footer-attribution">
+        <a href="http://www.dspace.org/" role="link" tabindex="0">{{ 'footer.link.dspace' | translate }}</a>
+        {{ 'footer.copyright' | translate:{year: dateObj | date:'y'} }}
+        <a href="https://www.lyrasis.org/" role="link" tabindex="0">{{ 'footer.link.lyrasis' | translate }}</a>
+      </p>
+    </div>
+    @if (coarLdnEnabled$ | async) {
+      <div class="notify-enabled text-white align-self-md-end pb-2">
+        <a class="coar-notify-support-route" routerLink="info/coar-notify-support" role="link" tabindex="0">
+          <img class="n-coar" src="assets/images/n-coar.svg" [attr.alt]="'menu.header.image.logo' | translate" />
+          {{ 'footer.link.coar-notify-support' | translate }}
+        </a>
+      </div>
+    }
+  </div>
+</footer>

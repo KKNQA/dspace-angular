@@ -1,0 +1,94 @@
+// KNQA "Repository Insights" — blue statistics panel (Stitch homepage design)
+
+$knqa-blue: #00286E;
+$knqa-blue-dark: #001543;
+
+:host {
+  display: block;
+
+  .knqa-insights {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, $knqa-blue 0%, $knqa-blue-dark 100%);
+    color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(13, 28, 46, 0.08);
+  }
+
+  // Oversized chart glyph bled off the bottom-right corner
+  .knqa-insights-watermark {
+    position: absolute;
+    right: -1rem;
+    bottom: -1.5rem;
+    font-size: 7.5rem;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  // `color` is explicit: the theme sets a dark $headings-color globally, which
+  // would otherwise win over the panel's inherited white.
+  .knqa-insights-head {
+    position: relative;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .knqa-insights-body {
+    position: relative;
+  }
+
+  .knqa-insights-figure {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .knqa-insights-label {
+    font-size: 0.9375rem;
+    opacity: 0.8;
+  }
+
+  .knqa-insights-rule {
+    margin: 1.5rem 0;
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 1;
+  }
+
+  .knqa-insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1rem;
+  }
+
+  .knqa-insight-figure {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .knqa-insight-label {
+    font-size: 0.8125rem;
+    opacity: 0.8;
+  }
+
+  .knqa-insights-badge {
+    position: relative;
+    display: inline-block;
+    margin: 2rem 0 0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+}

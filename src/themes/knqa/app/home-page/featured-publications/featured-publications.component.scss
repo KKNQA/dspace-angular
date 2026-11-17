@@ -1,0 +1,162 @@
+// KNQA "Featured Publications" — publication cards (Stitch homepage design)
+
+$knqa-blue: #00286E;
+$knqa-gold-tint: #F9F0E0;
+$knqa-gold-dark: #8A5A00;
+$knqa-surface-alt: #EFF4FF;
+$knqa-divider: #E2E8F0;
+$knqa-text-muted: #444651;
+
+:host {
+  display: block;
+
+  // Matches the "Browse Collections" heading treatment
+  .knqa-section-heading {
+    color: var(--bs-primary);
+    font-weight: 700;
+  }
+
+  .knqa-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .knqa-featured-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid $knqa-divider;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      border-color: rgba($knqa-blue, 0.25);
+      box-shadow: 0 10px 30px rgba(13, 28, 46, 0.08);
+    }
+  }
+
+  // Cover art. Real thumbnails are painted as a background; metadata-only
+  // records get the branded panel instead of an empty box.
+  .knqa-featured-cover {
+    height: 12rem;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+
+    &.is-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, $knqa-blue 0%, #001543 100%);
+
+      i {
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.35);
+      }
+    }
+  }
+
+  .knqa-featured-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.5rem;
+  }
+
+  .knqa-featured-pill {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: $knqa-surface-alt;
+    color: $knqa-blue;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .knqa-featured-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: var(--bs-body-color);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+  }
+
+  .knqa-featured-card:hover .knqa-featured-title a {
+    color: var(--bs-primary);
+  }
+
+  .knqa-featured-department {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: $knqa-text-muted;
+    font-size: 0.9375rem;
+
+    i {
+      font-size: 0.8125rem;
+    }
+  }
+
+  // Pinned to the bottom so cards in a row line their footers up regardless
+  // of how long the titles are.
+  .knqa-featured-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid $knqa-divider;
+  }
+
+  .knqa-featured-date {
+    color: $knqa-text-muted;
+    font-size: 0.8125rem;
+  }
+
+  .knqa-featured-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .knqa-featured-downloads {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: $knqa-text-muted;
+    font-size: 0.8125rem;
+  }
+
+  .knqa-featured-download {
+    display: inline-flex;
+    align-items: center;
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .knqa-featured-empty {
+    color: $knqa-text-muted;
+    margin: 0;
+  }
+}

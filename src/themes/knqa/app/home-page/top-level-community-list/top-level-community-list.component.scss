@@ -1,0 +1,41 @@
+:host {
+  display: block;
+
+  .knqa-section-heading {
+    color: var(--bs-primary);
+    font-weight: 700;
+  }
+
+  .knqa-view-all {
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-size: 0.9375rem;
+
+    i {
+      transition: transform 0.15s ease;
+    }
+
+    &:hover i {
+      transform: translateX(3px);
+    }
+  }
+
+  .knqa-section-lead {
+    color: #444651;
+    font-size: 1rem;
+  }
+
+  // Render top-level communities as a responsive card grid (Stitch "Browse Collections")
+  ::ng-deep ds-viewable-collection {
+    ds-object-list ul.list-unstyled {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+
+      > li {
+        margin: 0 !important;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+// KNQA theme — DSpace CSS variable overrides
+// (Bootstrap variables are handled in _theme_sass_variable_overrides.scss; these are the
+//  DSpace-specific `--ds-*` custom properties.)
+
+:root {
+  // Header / navbar — white sticky bar with 1px divider, per Stitch design
+  --ds-header-bg: #ffffff;
+  --ds-header-logo-height: 48px;
+  --ds-header-logo-height-xs: 40px;
+
+  @include media-breakpoint-up(md) {
+    --ds-header-logo-height: 48px;
+    --ds-header-height: 72px;
+  }
+  @include media-breakpoint-down(sm) {
+    --ds-header-logo-height: 40px;
+    --ds-header-height: 64px;
+  }
+
+  --ds-header-navbar-border-bottom-height: 1px;
+  --ds-expandable-navbar-border-top-color: #ffffff;
+  --ds-expandable-navbar-border-top-height: 0;
+  --ds-expandable-navbar-padding-top: 0.5rem;
+  --ds-navbar-bg: #ffffff;
+  --ds-header-navbar-border-top-color: #ffffff;
+  --ds-header-navbar-border-bottom-color: #{$knqa-divider};
+  --ds-navbar-link-color: #{$knqa-text-muted};
+  --ds-navbar-link-color-hover: #{$knqa-blue};
+  --ds-navbar-item-horizontal-padding: 0.75rem;
+  --ds-expandable-navbar-link-color: #{$knqa-text};
+  --ds-expandable-navbar-link-color-hover: #{$knqa-blue};
+  --ds-expandable-navbar-link-background-hover: #{$knqa-surface-alt};
+
+  // Breadcrumbs — quiet, transparent, chevron separated
+  --ds-breadcrumb-bg: transparent;
+  --ds-breadcrumb-link-color: #{$knqa-blue};
+  --ds-breadcrumb-link-active-color: #{$knqa-text};
+
+  // Home news (hero)
+  --ds-home-news-background-color: transparent;
+  --ds-home-news-link-color: #{$knqa-blue};
+  --ds-home-news-link-hover-color: #{$knqa-blue-dark};
+
+  // Footer — light blue-tinted band with navy bottom bar
+  --ds-top-footer-bg: #{$knqa-surface-alt};
+  --ds-footer-bg: #{$knqa-blue-dark};
+  --ds-footer-border: none;
+  --ds-footer-padding: 0;
+  --ds-footer-logo-height: 44px;
+
+  // Admin sidebar — deep navy (brand), light links
+  --ds-admin-sidebar-bg: #{$knqa-blue-dark};
+  --ds-admin-sidebar-active-bg: #{$knqa-blue};
+  --ds-admin-sidebar-header-bg: #{darken($knqa-blue-dark, 3%)};
+  --ds-admin-sidebar-link-color: rgba(255, 255, 255, 0.8);
+  --ds-admin-sidebar-link-hover-color: #ffffff;
+
+  // Cards & thumbnails
+  --ds-card-thumbnail-height: 220px;
+  --ds-thumbnail-placeholder-background: #{$knqa-surface-alt};
+  --ds-thumbnail-placeholder-border: 1px solid #{$knqa-divider};
+  --ds-thumbnail-placeholder-color: #{$knqa-blue};
+
+  // Selector dropdowns
+  --ds-dso-selector-current-background-color: #{$knqa-surface-alt};
+  --ds-dso-selector-current-background-hover-color: #{darken($knqa-surface-alt, 5%)};
+
+  // Notifications
+  --ds-notification-bg-success: #{$knqa-green};
+  --ds-notification-bg-danger: #b02a37;
+  --ds-notification-bg-info: #{$knqa-blue};
+  --ds-notification-bg-warning: #{darken($knqa-gold, 12%)};
+
+  // Dark scrollbar (admin sidebar)
+  --ds-dark-scrollbar-bg: #{$knqa-blue};
+  --ds-dark-scrollbar-alt-bg: #{lighten($knqa-blue, 4%)};
+}

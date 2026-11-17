@@ -1,0 +1,18 @@
+@if (collections$ | async; as collections) {
+  @if (collections.length > 0) {
+    <div class="knqa-top-collections">
+      <h4 class="knqa-top-collections-head">
+        {{ 'home.knqa.top-collections.head' | translate }}
+        <i class="fas fa-arrow-trend-up" aria-hidden="true"></i>
+      </h4>
+      <ul class="knqa-top-collections-list list-unstyled m-0">
+        @for (collection of collections; track collection.route) {
+          <li class="knqa-top-collection">
+            <a class="knqa-top-collection-name" [routerLink]="collection.route">{{ collection.name }}</a>
+            <span class="knqa-top-collection-count">{{ compact(collection.count) }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+}

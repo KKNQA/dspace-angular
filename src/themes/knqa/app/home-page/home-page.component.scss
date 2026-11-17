@@ -1,0 +1,39 @@
+:host {
+  .knqa-home-section {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  // The Stitch design sets this section on a full-bleed tinted band. A rounded
+  // tinted panel gives the same separation from the white sections above and
+  // below without breaking out of the page container (which risks horizontal
+  // overflow once a scrollbar is present).
+  .knqa-featured-section {
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    background: #F4F7FD;
+
+    @media (max-width: 575.98px) {
+      padding: 1.5rem;
+    }
+  }
+
+  // Featured publications (9 cols) beside the insights sidebar (3 cols),
+  // stacking below the large breakpoint.
+  .knqa-featured-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .knqa-featured-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

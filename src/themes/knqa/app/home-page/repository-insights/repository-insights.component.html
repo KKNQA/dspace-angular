@@ -1,0 +1,39 @@
+<div class="knqa-insights">
+  <i class="fas fa-chart-column knqa-insights-watermark" aria-hidden="true"></i>
+
+  <h3 class="knqa-insights-head">{{ 'home.knqa.insights.head' | translate }}</h3>
+
+  <div class="knqa-insights-body" aria-live="polite">
+    <div class="knqa-insights-headline">
+      <span class="knqa-insights-figure">{{ compact(totalItems$ | async) }}</span>
+      <span class="knqa-insights-label">{{ 'home.knqa.insights.publications' | translate }}</span>
+    </div>
+
+    <hr class="knqa-insights-rule"/>
+
+    <div class="knqa-insights-grid">
+      <div class="knqa-insight">
+        <span class="knqa-insight-figure">{{ compact(totalCommunities$ | async) }}</span>
+        <span class="knqa-insight-label">{{ 'home.knqa.insights.departments' | translate }}</span>
+      </div>
+      <div class="knqa-insight">
+        <span class="knqa-insight-figure">{{ compact(totalCollections$ | async) }}</span>
+        <span class="knqa-insight-label">{{ 'home.knqa.insights.collections' | translate }}</span>
+      </div>
+      <div class="knqa-insight">
+        <span class="knqa-insight-figure">{{ compact(totalResearchPapers$ | async) }}</span>
+        <span class="knqa-insight-label">{{ 'home.knqa.insights.research-papers' | translate }}</span>
+      </div>
+      <div class="knqa-insight">
+        <span class="knqa-insight-figure">{{ compact(totalReports$ | async) }}</span>
+        <span class="knqa-insight-label">{{ 'home.knqa.insights.reports' | translate }}</span>
+      </div>
+    </div>
+  </div>
+
+  @if (totalContributors$ | async; as contributors) {
+    <p class="knqa-insights-badge">
+      {{ 'home.knqa.insights.contributors' | translate: { count: compact(contributors) } }}
+    </p>
+  }
+</div>

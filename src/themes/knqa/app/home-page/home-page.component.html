@@ -1,0 +1,41 @@
+<ds-home-coar></ds-home-coar>
+<ds-home-news></ds-home-news>
+@if (showDiscoverFilters) {
+  <ds-configuration-search-page
+    [sideBarWidth]="3"
+    [showViewModes]="false"
+    [searchEnabled]="false"
+    [inPlaceSearch]="false"
+    [showScopeSelector]="false">
+    <ng-container searchContentTop *ngTemplateOutlet="homeContent"></ng-container>
+  </ds-configuration-search-page>
+}
+@if (!showDiscoverFilters) {
+  <div class="container">
+    <ng-container *ngTemplateOutlet="homeContent"></ng-container>
+  </div>
+}
+<ds-suggestions-popup></ds-suggestions-popup>
+
+<ng-template #homeContent>
+  <!-- The hero (ds-home-news) already contains the main search box -->
+  <section class="knqa-home-section" aria-labelledby="knqa-browse-communities">
+    <ds-top-level-community-list></ds-top-level-community-list>
+  </section>
+  <section class="knqa-home-section knqa-featured-section" aria-labelledby="knqa-featured">
+    <div class="knqa-featured-layout">
+      <div class="knqa-featured-main">
+        <ds-knqa-featured-publications></ds-knqa-featured-publications>
+      </div>
+      <aside class="knqa-featured-aside">
+        <ds-knqa-repository-insights></ds-knqa-repository-insights>
+        <ds-knqa-top-collections></ds-knqa-top-collections>
+      </aside>
+    </div>
+  </section>
+  @if (recentSubmissionspageSize>0) {
+    <section class="knqa-home-section">
+      <ds-recent-item-list></ds-recent-item-list>
+    </section>
+  }
+</ng-template>

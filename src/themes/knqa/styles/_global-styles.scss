@@ -1,0 +1,696 @@
+// KNQA theme — global styles
+// Restyles DSpace's presentation layer to the KNQA enterprise-government design language
+// (see DESIGN_ANALYSIS.md in the workspace root). Selectors target stable DSpace component
+// tags (ds-*) and long-lived template classes to stay upgrade-friendly.
+
+// imports the base global style
+@import '../../../styles/_global-styles.scss';
+
+/* =========================================================
+   1. Base
+   ========================================================= */
+
+body {
+  background-color: $knqa-surface;
+  color: $knqa-text;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, .h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+// Visible, high-contrast focus ring (WCAG 2.4.7) — gold on light, consistent everywhere
+a:focus-visible,
+button:focus-visible,
+[role='button']:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid $knqa-gold-dark;
+  outline-offset: 2px;
+}
+
+// 1280px professional container on wide screens
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* =========================================================
+   2. Buttons
+   ========================================================= */
+
+.btn {
+  border-radius: $border-radius;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  @include button-variant(
+    $knqa-blue,
+    $knqa-blue,
+    $color: #fff,
+    $hover-background: $knqa-blue-dark,
+    $hover-border: $knqa-blue-dark,
+    $hover-color: #fff,
+    $active-background: $knqa-blue-dark,
+    $active-border: $knqa-blue-dark,
+    $active-color: #fff
+  );
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  background-color: $knqa-blue;
+  border-color: $knqa-blue;
+}
+
+.btn-warning,
+.btn-accent {
+  color: #212529;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+}
+
+/* =========================================================
+   3. Cards & surfaces
+   ========================================================= */
+
+.card {
+  border: 1px solid $knqa-divider;
+  border-radius: $card-border-radius;
+  box-shadow: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    box-shadow: $box-shadow;
+  }
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom-color: $knqa-divider;
+  font-weight: 600;
+}
+
+.jumbotron {
+  background-color: $knqa-surface-alt;
+  border-radius: 1rem;
+}
+
+.modal-content {
+  border-radius: $card-border-radius;
+  border-color: $knqa-divider;
+}
+
+/* =========================================================
+   4. Badges — pill-shaped metadata chips
+   ========================================================= */
+
+.badge {
+  border-radius: 50rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+// DSpace object badges (type, access status, "my-dspace" status…) as soft tinted pills
+ds-badges .badge,
+ds-type-badge .badge,
+ds-status-badge .badge,
+ds-access-status-badge .badge,
+ds-my-dspace-status-badge .badge {
+  background-color: $knqa-surface-alt;
+  color: $knqa-blue;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  padding: 0.35em 0.9em;
+  margin-right: 0.25rem;
+}
+
+// Access status: green = open, muted = restricted (green strictly for positive status)
+ds-access-status-badge .badge {
+  background-color: #E7F2E9;
+  color: darken($knqa-green, 5%);
+
+  &.access-status-restricted,
+  &.access-status-embargo {
+    background-color: #FBECEC;
+    color: #93000A;
+  }
+}
+
+/* =========================================================
+   5. Forms
+   ========================================================= */
+
+.form-control,
+.custom-select {
+  border-radius: $border-radius;
+  border-color: #CBD5E0;
+  color: $knqa-text;
+
+  &:focus {
+    border-color: lighten($knqa-blue, 40%);
+    box-shadow: 0 0 0 0.2rem rgba(0, 40, 110, 0.12);
+  }
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: $knqa-text;
+}
+
+legend {
+  font-weight: 700;
+}
+
+/* =========================================================
+   6. Tables — light header band, hover rows
+   ========================================================= */
+
+.table {
+  background-color: #fff;
+  border-radius: $border-radius;
+
+  thead th {
+    background-color: $knqa-surface-alt;
+    border-bottom: 1px solid $knqa-divider;
+    border-top: none;
+    color: $knqa-text;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
+  }
+
+  td {
+    border-top-color: $knqa-divider;
+    vertical-align: middle;
+  }
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 40, 110, 0.04);
+}
+
+/* =========================================================
+   7. Pagination — rounded controls, navy active page
+   ========================================================= */
+
+.pagination {
+  .page-link {
+    border-radius: $border-radius;
+    margin: 0 0.15rem;
+    min-width: 2.4rem;
+    text-align: center;
+    color: $knqa-blue;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $knqa-surface-alt;
+    }
+  }
+
+  .page-item.active .page-link {
+    background-color: $knqa-blue;
+    border-color: $knqa-blue;
+    color: #fff;
+  }
+}
+
+ds-pagination .pagination-controls {
+  .sort-dropdown,
+  .results-per-page {
+    .btn {
+      border-radius: $border-radius;
+    }
+  }
+}
+
+/* =========================================================
+   8. Breadcrumbs — quiet, chevron-separated
+   ========================================================= */
+
+ds-breadcrumbs .breadcrumb {
+  background-color: transparent;
+  padding-left: 0;
+  font-size: 0.875rem;
+
+  .breadcrumb-item a {
+    color: $knqa-blue;
+  }
+
+  .breadcrumb-item.active {
+    color: $knqa-text-muted;
+    font-weight: 600;
+  }
+}
+
+/* =========================================================
+   9. Search — facets sidebar + result cards
+   ========================================================= */
+
+// Facet boxes: white cards with uppercase section labels and accordion toggles
+.facet-filter,
+.setting-option,
+.advanced-search {
+  background-color: #fff !important;
+  border: 1px solid $knqa-divider;
+  border-radius: $border-radius;
+  margin-bottom: 0.75rem;
+
+  .filter-name .h4,
+  h4, .h4 {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: $knqa-text;
+  }
+
+  .filter-toggle {
+    color: $knqa-text-muted;
+  }
+}
+
+#search-sidebar-content .sidebar-content > h3,
+ds-search-filters h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+// Facet checkboxes / values
+ds-search-facet-option,
+ds-search-facet-selected-option {
+  .filter-checkbox {
+    accent-color: $knqa-blue;
+  }
+}
+
+// Selected filter chips
+ds-search-labels .badge,
+ds-search-label .badge {
+  background-color: $knqa-blue;
+  color: #fff;
+  border-radius: 50rem;
+  padding: 0.45em 0.9em;
+}
+
+// Result rows become elevated white cards
+ds-object-list ds-pagination ul.list-unstyled > li {
+  background: #fff;
+  border: 1px solid $knqa-divider;
+  border-radius: $card-border-radius;
+  padding: 1.25rem 1.5rem;
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &.border-bottom {
+    border-bottom: 1px solid $knqa-divider !important; // keep card border, drop divider look
+  }
+
+  &:hover {
+    box-shadow: $box-shadow;
+    border-color: darken($knqa-divider, 8%);
+  }
+}
+
+// Result titles: navy, prominent
+.item-list-title {
+  color: $knqa-blue;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+
+  &:hover {
+    color: $knqa-blue-dark;
+  }
+}
+
+.item-list-abstract {
+  color: $knqa-text-muted;
+  margin-top: 0.375rem;
+}
+
+// "Showing X of Y" header
+ds-search-results .search-results-header,
+ds-pagination .pagination-info {
+  color: $knqa-text-muted;
+}
+
+// View mode switch buttons
+ds-view-mode-switch .btn-group .btn {
+  border-color: $knqa-divider;
+  color: $knqa-text-muted;
+
+  &.active {
+    background-color: $knqa-blue;
+    border-color: $knqa-blue;
+    color: #fff;
+  }
+}
+
+// Grid view cards
+ds-item-search-result-grid-element .card,
+ds-community-search-result-grid-element .card,
+ds-collection-search-result-grid-element .card {
+  height: var(--ds-card-height-percentage);
+
+  .card-title {
+    color: $knqa-blue;
+    font-weight: 700;
+  }
+}
+
+/* =========================================================
+   10. Item page (document details)
+   ========================================================= */
+
+ds-item-page,
+ds-untyped-item,
+ds-publication {
+  .item-page-title-field {
+    color: $knqa-text;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .simple-view-element {
+    margin-bottom: 1rem;
+  }
+
+  // Metadata blocks as soft tiles (Stitch metadata grid)
+  ds-generic-item-page-field,
+  ds-item-page-date-field,
+  ds-item-page-author-field,
+  ds-item-page-abstract-field,
+  ds-item-page-uri-field {
+    .simple-view-element {
+      background: $knqa-surface-alt;
+      border-radius: $border-radius;
+      padding: 0.75rem 1rem;
+
+      .simple-view-element-header {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: $knqa-text-muted;
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+
+  // Abstract reads as body copy, not a tile
+  ds-item-page-abstract-field .simple-view-element {
+    background: transparent;
+    padding: 0;
+
+    .simple-view-element-body {
+      color: $knqa-text;
+      line-height: 1.7;
+    }
+  }
+
+  // File download section
+  ds-item-page-file-section {
+    ds-file-download-link a {
+      color: $knqa-blue;
+      font-weight: 600;
+    }
+  }
+
+  .btn-outline-primary {
+    border-radius: $border-radius;
+  }
+}
+
+// "Full item page" metadata table
+ds-full-item-page table.table tr th {
+  width: 25%;
+}
+
+/* =========================================================
+   11. Browse / community / collection pages
+   ========================================================= */
+
+ds-browse-by {
+  .browse-by-title,
+  h1, h2 {
+    font-weight: 700;
+  }
+}
+
+// Community & collection homepage headers
+ds-community-page,
+ds-collection-page {
+  .comcol-header,
+  h1, h2 {
+    font-weight: 700;
+  }
+
+  .lead {
+    color: $knqa-text-muted;
+  }
+}
+
+// Community/collection list rows -> linked cards handled by object-list rule above
+ds-community-list-element .lead a,
+ds-collection-list-element .lead a {
+  color: $knqa-blue;
+  font-weight: 700;
+}
+
+// Hierarchical community list (expandable tree)
+ds-community-list {
+  cdk-tree-node {
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: $knqa-surface-alt;
+    }
+  }
+}
+
+// Recent submissions ("Latest Deposits") section heading
+ds-recent-item-list {
+  h2 {
+    color: $knqa-blue;
+    font-weight: 700;
+  }
+}
+
+/* =========================================================
+   12. Login / registration / profile
+   ========================================================= */
+
+// Standalone login page only — the header dropdown login keeps its compact layout
+ds-login-page ds-log-in {
+  display: block;
+  background: #fff;
+  border: 1px solid $knqa-divider;
+  border-radius: $card-border-radius;
+  padding: 2rem;
+  box-shadow: $box-shadow;
+  max-width: 420px;
+  margin: 2rem auto;
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+ds-register-email-form form,
+ds-profile-page .card {
+  border-radius: $card-border-radius;
+}
+
+/* =========================================================
+   13. Submission (upload wizard)
+   ========================================================= */
+
+ds-submission-edit,
+ds-submission-submit {
+  // Section cards
+  ds-submission-section-container > .card,
+  .section-focus,
+  .card {
+    border-radius: $card-border-radius;
+    border-color: $knqa-divider;
+    margin-bottom: 1rem;
+
+    .card-header {
+      background: #fff;
+      font-weight: 700;
+      color: $knqa-text;
+      border-radius: $card-border-radius $card-border-radius 0 0;
+    }
+  }
+
+  // Upload drop zone: dashed border panel per Stitch
+  ds-uploader .ng2-file-upload,
+  .upload-drop-zone,
+  ds-uploader .well {
+    border: 2px dashed darken($knqa-divider, 8%);
+    border-radius: $card-border-radius;
+    background: $knqa-surface-alt;
+  }
+
+  // Sticky footer action bar
+  ds-submission-form-footer {
+    .btn-primary,
+    .btn-success {
+      font-weight: 600;
+    }
+  }
+}
+
+/* =========================================================
+   14. MyDSpace / workflow (approval queue)
+   ========================================================= */
+
+ds-my-dspace-page {
+  ds-my-dspace-new-submission {
+    .btn-primary {
+      font-weight: 600;
+    }
+  }
+
+  // status badges: pending = gold tint, accepted = green tint
+  .badge-warning,
+  .text-bg-warning {
+    background-color: #FBF3E4 !important;
+    color: $knqa-gold-dark !important;
+  }
+
+  .badge-success,
+  .text-bg-success {
+    background-color: #E7F2E9 !important;
+    color: darken($knqa-green, 5%) !important;
+  }
+
+  ds-claimed-task-actions-approve .btn {
+    background-color: $knqa-green;
+    border-color: $knqa-green;
+  }
+}
+
+/* =========================================================
+   15. Admin UI polish
+   ========================================================= */
+
+// Sidebar is navy via --ds-admin-sidebar-* variables; round the active indicators
+ds-admin-sidebar {
+  .sidebar-section .nav-item.active,
+  .sidebar-section a.nav-link:hover {
+    border-radius: 0 50rem 50rem 0;
+  }
+}
+
+// Admin tables inherit §6; give bulk action bars breathing room
+ds-admin-search-page .search-controls,
+ds-metadata-registry .button-row {
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   16. Alerts, empty states, loading
+   ========================================================= */
+
+.alert {
+  border-radius: $border-radius;
+  border-width: 0;
+  border-left: 4px solid transparent;
+
+  &.alert-info {
+    background-color: $knqa-surface-alt;
+    color: $knqa-blue-dark;
+    border-left-color: $knqa-blue;
+  }
+
+  &.alert-success {
+    background-color: #E7F2E9;
+    color: darken($knqa-green, 10%);
+    border-left-color: $knqa-green;
+  }
+
+  &.alert-warning {
+    background-color: #FBF3E4;
+    color: $knqa-gold-dark;
+    border-left-color: $knqa-gold;
+  }
+
+  &.alert-danger {
+    background-color: #FBECEC;
+    color: #93000A;
+    border-left-color: #BA1A1A;
+  }
+}
+
+// ngx-skeleton loading placeholders take the tinted surface
+.skeleton-loader {
+  background-color: $knqa-surface-alt !important;
+  border-radius: $border-radius !important;
+}
+
+ds-loading {
+  color: $knqa-blue;
+}
+
+/* =========================================================
+   17. Misc chrome
+   ========================================================= */
+
+// Scroll-to-top, notifications
+ds-notification .notification-content {
+  border-radius: $border-radius;
+}
+
+// Dropdown menus
+.dropdown-menu {
+  border-radius: $border-radius;
+  border-color: $knqa-divider;
+  box-shadow: $box-shadow-lg;
+  overflow: hidden;
+
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: $knqa-surface-alt;
+      color: $knqa-blue;
+    }
+  }
+}
+
+// nav-tabs used across admin & item edit pages
+.nav-tabs {
+  border-bottom-color: $knqa-divider;
+
+  .nav-link {
+    color: $knqa-text-muted;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      color: $knqa-blue;
+      border-color: transparent;
+    }
+
+    &.active {
+      color: $knqa-blue;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid $knqa-blue;
+    }
+  }
+}

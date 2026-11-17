@@ -1,0 +1,40 @@
+:host {
+  display: block;
+
+  .knqa-community-element {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .knqa-community-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    background-color: #EFF4FF;
+    color: var(--bs-primary);
+    font-size: 1.25rem;
+  }
+
+  .knqa-community-body {
+    min-width: 0;
+
+    a.lead {
+      color: var(--bs-primary);
+      font-weight: 700;
+
+      &:hover {
+        color: var(--bs-dark);
+      }
+    }
+
+    .abstract-text {
+      font-size: 0.9375rem;
+      margin-top: 0.25rem;
+    }
+  }
+}

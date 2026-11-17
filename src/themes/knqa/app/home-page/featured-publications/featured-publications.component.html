@@ -1,0 +1,57 @@
+<h2 id="knqa-featured" class="knqa-section-heading mb-4">{{ 'home.knqa.featured.head' | translate }}</h2>
+
+@if (publications$ | async; as publications) {
+  @if (publications.length > 0) {
+    <div class="knqa-featured-grid" @fadeIn>
+      @for (publication of publications; track publication.item.id) {
+        <article class="knqa-featured-card">
+          <div class="knqa-featured-cover"
+               [class.is-fallback]="!publication.coverSrc"
+               [style.background-image]="publication.coverSrc ? 'url(' + publication.coverSrc + ')' : null"
+               aria-hidden="true">
+            @if (!publication.coverSrc) {
+              <i class="fas fa-file-lines" aria-hidden="true"></i>
+            }
+          </div>
+          <div class="knqa-featured-body">
+            @if (publication.category) {
+              <span class="knqa-featured-pill">{{ publication.category }}</span>
+            }
+            <h3 class="knqa-featured-title">
+              <a [routerLink]="publication.route">{{ publication.title }}</a>
+            </h3>
+            @if (publication.department) {
+              <p class="knqa-featured-department">
+                <i class="fas fa-building" aria-hidden="true"></i> {{ publication.department }}
+              </p>
+            }
+            <div class="knqa-featured-footer">
+              @if (publication.issued) {
+                <span class="knqa-featured-date">{{ publication.issued | date: 'MMM dd, y' }}</span>
+              }
+              <div class="knqa-featured-actions">
+                @if (publication.downloads !== null) {
+                  <span class="knqa-featured-downloads"
+                        [attr.aria-label]="'home.knqa.featured.downloads.label' | translate: { count: publication.downloads }">
+                    <i class="fas fa-download" aria-hidden="true"></i> {{ publication.downloads | number }}
+                  </span>
+                }
+                @if (publication.downloadRoute) {
+                  <a class="knqa-featured-download" [routerLink]="publication.downloadRoute">
+                    {{ 'home.knqa.featured.download' | translate }} <i class="fas fa-download ms-1" aria-hidden="true"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  } @else if (failed) {
+    <ds-error message="{{ 'home.knqa.featured.error' | translate }}"></ds-error>
+  } @else {
+    <p class="knqa-featured-empty">{{ 'home.knqa.featured.empty' | translate }}</p>
+  }
+} @else {
+  <ds-loading message="{{ 'home.knqa.featured.loading' | translate }}"></ds-loading>
+}

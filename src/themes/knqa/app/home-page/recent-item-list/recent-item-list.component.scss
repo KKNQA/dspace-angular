@@ -1,0 +1,188 @@
+// KNQA "Latest Deposits" — alternating vertical timeline (Stitch homepage design)
+
+$knqa-gold: #D3993F;
+$knqa-gold-dark: #8A5A00;
+$knqa-gold-tint: #F9F0E0;
+$knqa-surface-alt: #EFF4FF;
+$knqa-divider: #E2E8F0;
+$knqa-text-muted: #444651;
+
+:host {
+  display: block;
+
+  .knqa-recent-header {
+    margin-bottom: 3rem;
+
+    h2 {
+      color: var(--bs-primary);
+      font-weight: 700;
+    }
+
+    p {
+      color: $knqa-text-muted;
+      max-width: 36rem;
+      margin: 0.5rem auto 0;
+    }
+  }
+
+  .knqa-timeline {
+    position: relative;
+  }
+
+  // Center vertical line, desktop only
+  .knqa-timeline-line {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $knqa-divider;
+    transform: translateX(-50%);
+
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .knqa-timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .knqa-timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 2rem;
+      text-align: initial;
+
+      .knqa-timeline-body {
+        width: 50%;
+        text-align: right;
+      }
+
+      .knqa-timeline-meta {
+        width: 50%;
+        text-align: left;
+
+        .knqa-timeline-when {
+          justify-content: flex-start;
+        }
+      }
+
+      // Mirrored (alternate) rows
+      &.is-alt {
+        flex-direction: row-reverse;
+
+        .knqa-timeline-body {
+          text-align: left;
+        }
+
+        .knqa-timeline-meta {
+          text-align: right;
+
+          .knqa-timeline-when {
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  .knqa-timeline-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: var(--bs-body-color);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+  }
+
+  .knqa-timeline-item:hover .knqa-timeline-title a {
+    color: var(--bs-primary);
+  }
+
+  .knqa-timeline-abstract {
+    color: $knqa-text-muted;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  // Dot: 4px ring shifts from the light surface tint to the strong accent on
+  // row hover (stitch: ring-surface-container -> ring-primary-container / ring-secondary)
+  .knqa-timeline-dot {
+    z-index: 1;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    box-shadow: 0 0 0 4px $knqa-surface-alt;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .knqa-timeline-item:hover .knqa-timeline-dot {
+    box-shadow: 0 0 0 4px var(--bs-primary);
+  }
+
+  .knqa-timeline-item.is-alt .knqa-timeline-dot {
+    background: $knqa-gold;
+  }
+
+  .knqa-timeline-item.is-alt:hover .knqa-timeline-dot {
+    box-shadow: 0 0 0 4px $knqa-gold-dark;
+  }
+
+  .knqa-timeline-when {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .knqa-timeline-date {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    background: $knqa-surface-alt;
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .knqa-timeline-item.is-alt .knqa-timeline-date {
+    background: $knqa-gold-tint;
+    color: $knqa-gold-dark;
+  }
+
+  .knqa-timeline-time {
+    color: $knqa-text-muted;
+    font-size: 0.8125rem;
+  }
+
+  .knqa-timeline-author {
+    margin-top: 0.5rem;
+    color: $knqa-text-muted;
+    font-size: 0.875rem;
+
+    i {
+      font-size: 0.75rem;
+      margin-right: 0.25rem;
+    }
+  }
+}

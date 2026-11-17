@@ -1,0 +1,27 @@
+<ng-container *ngVar="(communitiesRD$ | async) as communitiesRD">
+  @if (communitiesRD?.hasSucceeded ) {
+    <div>
+      <div class="d-flex align-items-center justify-content-between flex-wrap mb-2">
+        <h2 id="knqa-browse-communities" class="knqa-section-heading mb-0">
+          {{'home.knqa.browse.head' | translate}}
+        </h2>
+        <a class="knqa-view-all" routerLink="/community-list">
+          {{'home.knqa.browse.view-all' | translate}} <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+        </a>
+      </div>
+      <p class="lead knqa-section-lead">{{'home.top-level-communities.help' | translate}}</p>
+      <ds-viewable-collection
+        [config]="config"
+        [sortConfig]="sortConfig"
+        [showRSS]="rssSortConfig"
+        [objects]="communitiesRD$ | async"
+        [hideGear]="true">
+      </ds-viewable-collection>
+    </div>
+  }
+  @if (communitiesRD?.hasFailed ) {
+    <ds-error message="{{'error.top-level-communities' | translate}}"></ds-error>
+  }
+  @if (communitiesRD?.isLoading ) {
+    <ds-loading message="{{'loading.top-level-communities' | translate}}"></ds-loading>
+  }</ng-container>
