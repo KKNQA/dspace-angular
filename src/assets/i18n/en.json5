@@ -355,7 +355,7 @@
 
   "admin.access-control.epeople.form.table.name": "Name",
 
-  "admin.access-control.epeople.form.table.collectionOrCommunity": "Collection/Community",
+  "admin.access-control.epeople.form.table.collectionOrCommunity": "Collection/Knowledge Area",
 
   "admin.access-control.epeople.form.memberOfNoGroups": "This EPerson is not a member of any groups",
 
@@ -393,7 +393,7 @@
 
   "admin.access-control.groups.table.name": "Name",
 
-  "admin.access-control.groups.table.collectionOrCommunity": "Collection/Community",
+  "admin.access-control.groups.table.collectionOrCommunity": "Collection/Knowledge Area",
 
   "admin.access-control.groups.table.members": "Members",
 
@@ -421,7 +421,7 @@
 
   "admin.access-control.groups.form.groupName": "Group name",
 
-  "admin.access-control.groups.form.groupCommunity": "Community or Collection",
+  "admin.access-control.groups.form.groupCommunity": "Knowledge Area or Collection",
 
   "admin.access-control.groups.form.groupDescription": "Description",
 
@@ -509,7 +509,7 @@
 
   "admin.access-control.groups.form.subgroups-list.table.name": "Name",
 
-  "admin.access-control.groups.form.subgroups-list.table.collectionOrCommunity": "Collection/Community",
+  "admin.access-control.groups.form.subgroups-list.table.collectionOrCommunity": "Collection/Knowledge Area",
 
   "admin.access-control.groups.form.subgroups-list.table.edit": "Remove / Add",
 
@@ -545,7 +545,7 @@
 
   "admin.notifications.source.breadcrumbs": "Quality Assurance",
 
-  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or community, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
+  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or knowledge area, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
 
   "admin.access-control.groups.form.tooltip.editGroup.addEpeople": "To add or remove an EPerson to/from this group, either click the 'Browse All' button or use the search bar below to search for users (use the dropdown to the left of the search bar to choose whether to search by metadata or by email). Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages.",
 
@@ -563,7 +563,7 @@
 
   "admin.reports.collections.item-results": "Item Results",
 
-  "admin.reports.collections.community": "Community",
+  "admin.reports.collections.community": "Knowledge Area",
 
   "admin.reports.collections.collection": "Collection",
 
@@ -1147,7 +1147,7 @@
 
   "collection.create.notifications.success": "Successfully created the collection",
 
-  "collection.create.sub-head": "Create a Collection for Community {{ parent }}",
+  "collection.create.sub-head": "Create a Collection for Knowledge Area {{ parent }}",
 
   "collection.curate.header": "Curate Collection: {{collection}}",
 
@@ -1419,11 +1419,11 @@
 
   "collection.source.update.notifications.error.title": "Server Error",
 
-  "communityList.breadcrumbs": "Community List",
+  "communityList.breadcrumbs": "Knowledge Area List",
 
-  "communityList.tabTitle": "Community List",
+  "communityList.tabTitle": "Knowledge Area List",
 
-  "communityList.title": "List of Communities",
+  "communityList.title": "List of Knowledge Areas",
 
   "communityList.showMore": "Show More",
 
@@ -1431,19 +1431,19 @@
 
   "communityList.collapse": "Collapse {{ name }}",
 
-  "community.browse.logo": "Browse for a community logo",
+  "community.browse.logo": "Browse for a knowledge area logo",
 
-  "community.subcoms-cols.breadcrumbs": "Subcommunities and Collections",
+  "community.subcoms-cols.breadcrumbs": "Sub-Knowledge Areas and Collections",
 
-  "community.create.breadcrumbs": "Create Community",
+  "community.create.breadcrumbs": "Create Knowledge Area",
 
-  "community.create.head": "Create a Community",
+  "community.create.head": "Create a Knowledge Area",
 
-  "community.create.notifications.success": "Successfully created the community",
+  "community.create.notifications.success": "Successfully created the knowledge area",
 
-  "community.create.sub-head": "Create a Sub-Community for Community {{ parent }}",
+  "community.create.sub-head": "Create a Sub-Knowledge Area for Knowledge Area {{ parent }}",
 
-  "community.curate.header": "Curate Community: {{community}}",
+  "community.curate.header": "Curate Knowledge Area: {{community}}",
 
   "community.delete.cancel": "Cancel",
 
@@ -1451,19 +1451,19 @@
 
   "community.delete.processing": "Deleting...",
 
-  "community.delete.head": "Delete Community",
+  "community.delete.head": "Delete Knowledge Area",
 
-  "community.delete.notification.fail": "Community could not be deleted",
+  "community.delete.notification.fail": "Knowledge Area could not be deleted",
 
-  "community.delete.notification.success": "Successfully deleted community",
+  "community.delete.notification.success": "Successfully deleted knowledge area",
 
-  "community.delete.text": "Are you sure you want to delete community \"{{ dso }}\"",
+  "community.delete.text": "Are you sure you want to delete knowledge area \"{{ dso }}\"",
 
-  "community.edit.delete": "Delete this community",
+  "community.edit.delete": "Delete this knowledge area",
 
-  "community.edit.head": "Edit Community",
+  "community.edit.head": "Edit Knowledge Area",
 
-  "community.edit.breadcrumbs": "Edit Community",
+  "community.edit.breadcrumbs": "Edit Knowledge Area",
 
   "community.edit.logo.delete.title": "Delete logo",
 
@@ -1473,51 +1473,51 @@
 
   "community-collection.edit.logo.delete-undo.title": "Undo delete",
 
-  "community.edit.logo.label": "Community logo",
+  "community.edit.logo.label": "Knowledge Area logo",
 
-  "community.edit.logo.notifications.add.error": "Uploading community logo failed. Please verify the content before retrying.",
+  "community.edit.logo.notifications.add.error": "Uploading knowledge area logo failed. Please verify the content before retrying.",
 
-  "community.edit.logo.notifications.add.success": "Upload community logo successful.",
+  "community.edit.logo.notifications.add.success": "Upload knowledge area logo successful.",
 
   "community.edit.logo.notifications.delete.success.title": "Logo deleted",
 
-  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the community's logo",
+  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the knowledge area's logo",
 
   "community.edit.logo.notifications.delete.error.title": "Error deleting logo",
 
-  "community.edit.logo.upload": "Drop a community logo to upload",
+  "community.edit.logo.upload": "Drop a knowledge area logo to upload",
 
-  "community.edit.notifications.success": "Successfully edited the community",
+  "community.edit.notifications.success": "Successfully edited the knowledge area",
 
   "community.edit.notifications.unauthorized": "You do not have privileges to make this change",
 
-  "community.edit.notifications.error": "An error occurred while editing the community",
+  "community.edit.notifications.error": "An error occurred while editing the knowledge area",
 
   "community.edit.return": "Back",
 
   "community.edit.tabs.curate.head": "Curate",
 
-  "community.edit.tabs.curate.title": "Community Edit - Curate",
+  "community.edit.tabs.curate.title": "Knowledge Area Edit - Curate",
 
   "community.edit.tabs.access-control.head": "Access Control",
 
-  "community.edit.tabs.access-control.title": "Community Edit - Access Control",
+  "community.edit.tabs.access-control.title": "Knowledge Area Edit - Access Control",
 
   "community.edit.tabs.metadata.head": "Edit Metadata",
 
-  "community.edit.tabs.metadata.title": "Community Edit - Metadata",
+  "community.edit.tabs.metadata.title": "Knowledge Area Edit - Metadata",
 
   "community.edit.tabs.roles.head": "Assign Roles",
 
-  "community.edit.tabs.roles.title": "Community Edit - Roles",
+  "community.edit.tabs.roles.title": "Knowledge Area Edit - Roles",
 
   "community.edit.tabs.authorizations.head": "Authorizations",
 
-  "community.edit.tabs.authorizations.title": "Community Edit - Authorizations",
+  "community.edit.tabs.authorizations.title": "Knowledge Area Edit - Authorizations",
 
-  "community.listelement.badge": "Community",
+  "community.listelement.badge": "Knowledge Area",
 
-  "community.logo": "Community logo",
+  "community.logo": "Knowledge Area logo",
 
   "comcol-role.edit.no-group": "None",
 
@@ -1543,7 +1543,7 @@
 
   "comcol-role.edit.collection-admin.name": "Administrators",
 
-  "comcol-role.edit.community-admin.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+  "comcol-role.edit.community-admin.description": "Knowledge Area administrators can create sub-knowledge areas or collections, and manage or assign management for those sub-knowledge areas or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
   "comcol-role.edit.collection-admin.description": "Collection administrators decide who can submit items to the collection, edit item metadata (after submission), and add (map) existing items from other collections to this collection (subject to authorization for that collection).",
 
@@ -1583,7 +1583,7 @@
 
   "community.form.description": "Introductory text (HTML)",
 
-  "community.form.errors.title.required": "Please enter a community name",
+  "community.form.errors.title.required": "Please enter a knowledge area name",
 
   "community.form.rights": "Copyright text (HTML)",
 
@@ -1591,9 +1591,9 @@
 
   "community.form.title": "Name",
 
-  "community.page.edit": "Edit this community",
+  "community.page.edit": "Edit this knowledge area",
 
-  "community.page.handle": "Permanent URI for this community",
+  "community.page.handle": "Permanent URI for this knowledge area",
 
   "community.page.license": "License",
 
@@ -1601,15 +1601,15 @@
 
   "community.page.options": "Options",
 
-  "community.all-lists.head": "Subcommunities and Collections",
+  "community.all-lists.head": "Sub-Knowledge Areas and Collections",
 
   "community.search.breadcrumbs": "Search",
 
   "community.search.results.head": "Search Results",
 
-  "community.sub-collection-list.head": "Collections in this community",
+  "community.sub-collection-list.head": "Collections in this knowledge area",
 
-  "community.sub-community-list.head": "Communities in this Community",
+  "community.sub-community-list.head": "Knowledge Areas in this Knowledge Area",
 
   "cookies.consent.accept-all": "Accept all",
 
@@ -1751,13 +1751,13 @@
 
   "dso-selector.create.collection.sub-level": "Create a new collection in",
 
-  "dso-selector.create.community.head": "New community",
+  "dso-selector.create.community.head": "New knowledge area",
 
   "dso-selector.create.community.or-divider": "or",
 
-  "dso-selector.create.community.sub-level": "Create a new community in",
+  "dso-selector.create.community.sub-level": "Create a new knowledge area in",
 
-  "dso-selector.create.community.top-level": "Create a new top-level community",
+  "dso-selector.create.community.top-level": "Create a new top-level knowledge area",
 
   "dso-selector.create.item.head": "New item",
 
@@ -1767,7 +1767,7 @@
 
   "dso-selector.edit.collection.head": "Edit collection",
 
-  "dso-selector.edit.community.head": "Edit community",
+  "dso-selector.edit.community.head": "Edit knowledge area",
 
   "dso-selector.edit.item.head": "Edit item",
 
@@ -1783,7 +1783,7 @@
 
   "dso-selector.placeholder": "Search for a {{ type }}",
 
-  "dso-selector.placeholder.type.community": "community",
+  "dso-selector.placeholder.type.community": "knowledge area",
 
   "dso-selector.placeholder.type.collection": "collection",
 
@@ -1797,7 +1797,7 @@
 
   "dso-selector.set-scope.community.or-divider": "or",
 
-  "dso-selector.set-scope.community.input-header": "Search for a community or collection",
+  "dso-selector.set-scope.community.input-header": "Search for a knowledge area or collection",
 
   "dso-selector.claim.item.head": "Profile tips",
 
@@ -1895,7 +1895,7 @@
 
   "error.collections": "Error fetching collections",
 
-  "error.community": "Error fetching community",
+  "error.community": "Error fetching knowledge area",
 
   "error.identifier": "No item found for the identifier",
 
@@ -1917,11 +1917,11 @@
 
   "error.sub-collections": "Error fetching sub-collections",
 
-  "error.sub-communities": "Error fetching sub-communities",
+  "error.sub-communities": "Error fetching sub-knowledge areas",
 
   "error.submission.sections.init-form-error": "An error occurred during section initialize, please check your input-form configuration. Details are below : <br> <br>",
 
-  "error.top-level-communities": "Error fetching top-level communities",
+  "error.top-level-communities": "Error fetching top-level knowledge areas",
 
   "error.validation.license.notgranted": "You must grant this license to complete your submission. If you are unable to grant this license at this time you may save your work and return later or remove the submission.",
 
@@ -1978,6 +1978,81 @@
   "footer.link.feedback": "Send Feedback",
 
   "footer.link.coar-notify-support": "COAR Notify",
+
+  // KNQA theme additions
+  "footer.knqa.blurb": "A centralized platform for the preservation and dissemination of Kenya's national qualification standards, research papers, and official government publications.",
+
+  "footer.knqa.quicklinks.head": "Quick Links",
+
+  "footer.knqa.quicklinks.search": "Search Repository",
+
+  "footer.knqa.quicklinks.communities": "Knowledge Areas & Collections",
+
+  "footer.knqa.quicklinks.browse": "Browse Publications",
+
+  "footer.knqa.legal.head": "Legal & Support",
+
+  "footer.knqa.contact.head": "Contact",
+
+  "footer.knqa.contact.address1": "KNQA Headquarters,",
+
+  "footer.knqa.contact.address2": "Upper Hill, Nairobi, Kenya",
+
+  "footer.knqa.copyright": "© {{ year }} Kenya National Qualifications Authority (KNQA). An Agency of the Government of Kenya.",
+
+  "home.knqa.hero.title.line1": "Kenya National Qualifications Authority",
+
+  "home.knqa.hero.title.line2": "Digital Repository",
+
+  "home.knqa.hero.description": "A centralized platform for the preservation and dissemination of Kenya's national qualification standards, research papers, and official government publications.",
+
+  "home.knqa.stats.publications": "Publications",
+
+  "home.knqa.stats.communities": "Knowledge Areas",
+
+  "home.knqa.stats.collections": "Collections",
+
+  "home.knqa.browse.head": "Browse Collections",
+
+  "home.knqa.browse.view-all": "View All Knowledge Areas",
+
+  "home.knqa.featured.head": "Featured Publications",
+
+  "home.knqa.featured.download": "Download",
+
+  "home.knqa.featured.downloads.label": "{{ count }} downloads",
+
+  "home.knqa.featured.loading": "Loading featured publications...",
+
+  "home.knqa.featured.empty": "No publications have been deposited yet.",
+
+  "home.knqa.featured.error": "Something went wrong loading the featured publications.",
+
+  "home.knqa.insights.head": "Repository Insights",
+
+  "home.knqa.insights.publications": "Total Publications",
+
+  "home.knqa.insights.departments": "Departments",
+
+  "home.knqa.insights.collections": "Collections",
+
+  "home.knqa.insights.research-papers": "Research Papers",
+
+  "home.knqa.insights.reports": "Reports",
+
+  "home.knqa.insights.contributors": "{{ count }} Registered Contributors",
+
+  "home.knqa.top-collections.head": "Top Collections",
+
+  "home.knqa.recent.head": "Latest Deposits",
+
+  "home.knqa.recent.description": "Recently added publications across all categories in the KNQA digital repository.",
+
+  "home.knqa.recent.today": "Today",
+
+  "home.knqa.recent.yesterday": "Yesterday",
+
+  "home.knqa.recent.view-all": "View All Deposits",
 
   "forgot-email.form.header": "Forgot Password",
 
@@ -2209,9 +2284,9 @@
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Communities in DSpace",
+  "home.top-level-communities.head": "Knowledge Areas in DSpace",
 
-  "home.top-level-communities.help": "Select a community to browse its collections.",
+  "home.top-level-communities.help": "Select a knowledge area to browse its collections.",
 
   "info.accessibility-settings.breadcrumbs": "Accessibility settings",
 
@@ -3369,7 +3444,7 @@
 
   "loading.content-source": "Loading content source...",
 
-  "loading.community": "Loading community...",
+  "loading.community": "Loading knowledge area...",
 
   "loading.default": "Loading...",
 
@@ -3387,15 +3462,15 @@
 
   "loading.sub-collections": "Loading sub-collections...",
 
-  "loading.sub-communities": "Loading sub-communities...",
+  "loading.sub-communities": "Loading sub-knowledge areas...",
 
-  "loading.top-level-communities": "Loading top-level communities...",
+  "loading.top-level-communities": "Loading top-level knowledge areas...",
 
   "login.form.email": "Email address",
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to DSpace",
+  "login.form.header": "Sign in to the KNQA Digital Repository",
 
   "login.form.new-user": "New user? Click here to register.",
 
@@ -3425,7 +3500,7 @@
 
   "menu.header.admin": "Management",
 
-  "menu.header.image.logo": "Repository logo",
+  "menu.header.image.logo": "Kenya National Qualifications Authority logo",
 
   "menu.header.admin.description": "Management menu",
 
@@ -3447,7 +3522,7 @@
 
   "menu.section.admin_search": "Admin Search",
 
-  "menu.section.browse_community": "This Community",
+  "menu.section.browse_community": "This Knowledge Area",
 
   "menu.section.browse_community_by_author": "By Author",
 
@@ -3455,7 +3530,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of DSpace",
+  "menu.section.browse_global": "KNQA Repository",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -3469,7 +3544,7 @@
 
   "menu.section.browse_global_by_title": "By Title",
 
-  "menu.section.browse_global_communities_and_collections": "Communities & Collections",
+  "menu.section.browse_global_communities_and_collections": "Knowledge Areas & Collections",
 
   "menu.section.browse_global_geospatial_map": "By Geolocation (Map)",
 
@@ -3481,7 +3556,7 @@
 
   "menu.section.edit_collection": "Collection",
 
-  "menu.section.edit_community": "Community",
+  "menu.section.edit_community": "Knowledge Area",
 
   "menu.section.edit_item": "Item",
 
@@ -3489,7 +3564,7 @@
 
   "menu.section.export_collection": "Collection",
 
-  "menu.section.export_community": "Community",
+  "menu.section.export_community": "Knowledge Area",
 
   "menu.section.export_item": "Item",
 
@@ -3535,7 +3610,7 @@
 
   "menu.section.new_collection": "Collection",
 
-  "menu.section.new_community": "Community",
+  "menu.section.new_community": "Knowledge Area",
 
   "menu.section.new_item": "Item",
 
@@ -3691,9 +3766,9 @@
 
   "notification.suggestion.please": "Please",
 
-  "nav.browse.header": "All of DSpace",
+  "nav.browse.header": "KNQA Repository",
 
-  "nav.community-browse.header": "By Community",
+  "nav.community-browse.header": "By Knowledge Area",
 
   "nav.context-help-toggle": "Toggle context help",
 
@@ -4427,11 +4502,11 @@
 
   "relationships.Journal.isVolumeOfJournal.JournalVolume": "Journal Volume",
 
-  "repository.image.logo": "Repository logo",
+  "repository.image.logo": "KNQA Digital Repository logo",
 
-  "repository.title": "DSpace Repository",
+  "repository.title": "KNQA Digital Repository",
 
-  "repository.title.prefix": "DSpace Repository :: ",
+  "repository.title.prefix": "KNQA Digital Repository :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -4443,7 +4518,7 @@
 
   "resource-policies.add.for.item": "Add a new Item policy",
 
-  "resource-policies.add.for.community": "Add a new Community policy",
+  "resource-policies.add.for.community": "Add a new Knowledge Area policy",
 
   "resource-policies.add.for.collection": "Add a new Collection policy",
 
@@ -4553,7 +4628,7 @@
 
   "resource-policies.table.headers.title.for.item": "Policies for Item",
 
-  "resource-policies.table.headers.title.for.community": "Policies for Community",
+  "resource-policies.table.headers.title.for.community": "Policies for Knowledge Area",
 
   "resource-policies.table.headers.title.for.collection": "Policies for Collection",
 
@@ -4872,7 +4947,7 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of DSpace",
+  "search.form.scope.all": "All of KNQA Repository",
 
   "search.results.head": "Search Results",
 
@@ -5832,7 +5907,7 @@
 
   "subscriptions.collection": "Subscriptions for collections",
 
-  "subscriptions.community": "Subscriptions for communities",
+  "subscriptions.community": "Subscriptions for knowledge areas",
 
   "subscriptions.subscription_type": "Subscription type",
 
@@ -5896,7 +5971,7 @@
 
   "subscriptions.table.not-available-message": "The subscribed item has been deleted, or you don't currently have the permission to view it",
 
-  "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a community or collection, use the subscription button on the object's page.",
+  "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a knowledge area or collection, use the subscription button on the object's page.",
 
   "thumbnail.default.alt": "Thumbnail Image",
 
@@ -6368,7 +6443,7 @@
 
   "collection-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by this collection. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
-  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this community. Changes may be performed to either all Item metadata or all content (bitstreams).",
+  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this knowledge area. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
   "access-control-item-header-toggle": "Item's Metadata",
 
