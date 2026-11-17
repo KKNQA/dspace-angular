@@ -3,3 +3,31 @@ rest:
   host: sandbox.dspace.org
   port: 443
   nameSpace: /server
+
+# Homepage "Latest Deposits" timeline shows the 3 most recent items;
+# the browse grid shows all 8 knowledge areas
+homePage:
+  recentSubmissions:
+    pageSize: 3
+  topLevelCommunityList:
+    pageSize: 8
+
+# KNQA theme — applies to every route. See src/themes/knqa and THEME_GUIDE.md.
+themes:
+  - name: knqa
+    headTags:
+      - tagName: link
+        attributes:
+          rel: icon
+          href: assets/knqa/images/favicon-32.png
+          sizes: 32x32
+      - tagName: link
+        attributes:
+          rel: icon
+          href: assets/knqa/images/favicon-64.png
+          sizes: 64x64
+      - tagName: link
+        attributes:
+          rel: apple-touch-icon
+          href: assets/knqa/images/favicon-180.png
+          sizes: 180x180
