@@ -5,7 +5,7 @@ those base files (accessibility, new menu items, new metadata fields, bug fixes)
 reach the KNQA UI automatically. On every upgrade, check what upstream changed in them
 and port the relevant parts by hand.
 
-Based on: **dspace-9.1**. Update this line after each upgrade.
+Based on: **dspace-9.4**. Update this line after each upgrade.
 
 | KNQA override (`src/themes/knqa/app/…`) | Upstream base (`src/app/…`) | What KNQA changed |
 |---|---|---|
