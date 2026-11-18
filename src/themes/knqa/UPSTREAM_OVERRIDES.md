@@ -22,6 +22,21 @@ Based on: **dspace-9.1**. Update this line after each upgrade.
 | `item-page/simple/item-types/untyped-item/` | `item-page/simple/item-types/untyped-item/` | Document-details layout |
 | `item-page/simple/item-types/publication/` | `item-page/simple/item-types/publication/` | Same layout plus relations |
 
+Small skeleton overrides kept on purpose (removing them would change behaviour or styling):
+
+| KNQA file (`src/themes/knqa/app/…`) | Why it stays |
+|---|---|
+| `community-list-page/community-list/` | Drops the base component's SCSS |
+| `shared/object-collection/shared/badges/access-status-badge/` | Drops the base component's SCSS (badges are styled globally) |
+| `shared/dso-selector/modal-wrappers/edit-item-selector/` | Template differs from the base |
+| `shared/search/search-filters/`, `search-settings/`, `search-sidebar/` | Provide `SearchConfigurationService` the way the skeleton does |
+| `shared/object-list/collection-list-element/`, `browse-entry-list-element/`, `search-result-list-element/…/item/`, `sidebar-search-list-element/…/publication/`, `entity-groups/…/journal`, `journal-issue`, `journal-volume`, `person` | Registered with `@listableObjectComponent(…, 'knqa')`. A theme registration ranks above DSpace's context-specific ones, so removing these changes which component renders (e.g. on the admin search and community pages; found by KNQA CI in Gate 3) |
+| `community-page/sections/sub-com-col-section/*`, `shared/object-list/object-list.component.*` | No fade-in animation / default change detection, unlike the base. Kept to be safe |
+
+Every other component uses the official DSpace version directly. Theme stubs that only
+pointed at the base template were removed in Gate 3; do not re-add stubs from
+`src/themes/custom` unless you change them.
+
 New KNQA-only components (no upstream base, but they use DSpace services; a failing build
 or wrong homepage numbers point here): `home-page/featured-publications/`,
 `home-page/repository-insights/`, `home-page/top-collections/`.

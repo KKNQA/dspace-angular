@@ -14,24 +14,12 @@ import { TopLevelCommunityListComponent } from './app/home-page/top-level-commun
 import { PublicationComponent } from './app/item-page/simple/item-types/publication/publication.component';
 import { UntypedItemComponent } from './app/item-page/simple/item-types/untyped-item/untyped-item.component';
 import { NavbarComponent } from './app/navbar/navbar.component';
-import { SearchNavbarComponent } from './app/search-navbar/search-navbar.component';
-import { CollectionDropdownComponent } from './app/shared/collection-dropdown/collection-dropdown.component';
-import { CreateCollectionParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-collection-parent-selector/create-collection-parent-selector.component';
-import { CreateCommunityParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-community-parent-selector/create-community-parent-selector.component';
-import { CreateItemParentSelectorComponent } from './app/shared/dso-selector/modal-wrappers/create-item-parent-selector/create-item-parent-selector.component';
-import { EditCollectionSelectorComponent } from './app/shared/dso-selector/modal-wrappers/edit-collection-selector/edit-collection-selector.component';
-import { EditCommunitySelectorComponent } from './app/shared/dso-selector/modal-wrappers/edit-community-selector/edit-community-selector.component';
 import { EditItemSelectorComponent } from './app/shared/dso-selector/modal-wrappers/edit-item-selector/edit-item-selector.component';
-import { FileDownloadLinkComponent } from './app/shared/file-download-link/file-download-link.component';
-import { LangSwitchComponent } from './app/shared/lang-switch/lang-switch.component';
-import { LogInComponent } from './app/shared/log-in/log-in.component';
 import { BrowseEntryListElementComponent } from './app/shared/object-list/browse-entry-list-element/browse-entry-list-element.component';
 import { CollectionListElementComponent } from './app/shared/object-list/collection-list-element/collection-list-element.component';
 import { CommunityListElementComponent } from './app/shared/object-list/community-list-element/community-list-element.component';
 import { ItemSearchResultListElementComponent } from './app/shared/object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
 import { PublicationSidebarSearchListElementComponent } from './app/shared/object-list/sidebar-search-list-element/item-types/publication/publication-sidebar-search-list-element.component';
-import { StartsWithDateComponent } from './app/shared/starts-with/date/starts-with-date.component';
-import { StartsWithTextComponent } from './app/shared/starts-with/text/starts-with-text.component';
 
 /**
  * Add components that use a custom decorator to ENTRY_COMPONENTS as well as DECLARATIONS.
@@ -46,10 +34,6 @@ const ENTRY_COMPONENTS = [
   UntypedItemComponent,
   CommunityListElementComponent,
   CollectionListElementComponent,
-  CollectionDropdownComponent,
-  FileDownloadLinkComponent,
-  StartsWithDateComponent,
-  StartsWithTextComponent,
   PublicationSidebarSearchListElementComponent,
   ItemSearchResultListElementComponent,
   TopLevelCommunityListComponent,
@@ -62,16 +46,8 @@ const DECLARATIONS = [
   HeaderComponent,
   HeaderNavbarWrapperComponent,
   NavbarComponent,
-  SearchNavbarComponent,
   FooterComponent,
-  CreateCollectionParentSelectorComponent,
-  CreateCommunityParentSelectorComponent,
-  CreateItemParentSelectorComponent,
-  EditCollectionSelectorComponent,
-  EditCommunitySelectorComponent,
   EditItemSelectorComponent,
-  LogInComponent,
-  LangSwitchComponent,
 ];
 
 @NgModule({
