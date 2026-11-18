@@ -51,4 +51,10 @@ const md = [
 ].join('\n');
 console.log(md);
 if (SUMMARY) { fs.appendFileSync(SUMMARY, md + '\n'); }
+// Also as a GitHub annotation, which (unlike the run summary) is visible without signing in
+const changed = rows.filter((r) => r.pct > 0).slice(0, 40).map((r) => `${r.f} ${r.pct.toFixed(3)}% ${r.note}`.trim());
+if (changed.length) {
+  const level = failing.length ? 'error' : 'notice';
+  console.log(`::${level} title=KNQA visual comparison (${failing.length} over ${limit}%, ${changed.length} changed)::${changed.join('%0A')}`);
+}
 process.exit(failing.length ? 2 : 0);
