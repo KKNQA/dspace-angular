@@ -17,9 +17,12 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { RootModule } from '../../app/root.module';
 import { SearchResultsSkeletonComponent } from '../../app/shared/search/search-results/search-results-skeleton/search-results-skeleton.component';
 import { CommunityListComponent } from './app/community-list-page/community-list/community-list.component';
+import { CommunityPageSubCollectionListComponent } from './app/community-page/sections/sub-com-col-section/sub-collection-list/community-page-sub-collection-list.component';
+import { CommunityPageSubCommunityListComponent } from './app/community-page/sections/sub-com-col-section/sub-community-list/community-page-sub-community-list.component';
 import { HomePageComponent } from './app/home-page/home-page.component';
 import { LoginPageComponent } from './app/login-page/login-page.component';
 import { AccessStatusBadgeComponent } from './app/shared/object-collection/shared/badges/access-status-badge/access-status-badge.component';
+import { ObjectListComponent } from './app/shared/object-list/object-list.component';
 import { SearchFiltersComponent } from './app/shared/search/search-filters/search-filters.component';
 import { SearchSettingsComponent } from './app/shared/search/search-settings/search-settings.component';
 import { SearchSidebarComponent } from './app/shared/search/search-sidebar/search-sidebar.component';
@@ -28,6 +31,9 @@ const DECLARATIONS = [
   HomePageComponent,
   LoginPageComponent,
   CommunityListComponent,
+  CommunityPageSubCommunityListComponent,
+  CommunityPageSubCollectionListComponent,
+  ObjectListComponent,
   SearchSettingsComponent,
   SearchFiltersComponent,
   SearchSidebarComponent,
