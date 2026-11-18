@@ -34,7 +34,6 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   styleUrls: ['./untyped-item.component.scss'],
   templateUrl: './untyped-item.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     AsyncPipe,
     CollectionsComponent,

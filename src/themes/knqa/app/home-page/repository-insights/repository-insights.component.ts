@@ -47,7 +47,6 @@ const CONTRIBUTOR_INDEX = 'author';
   selector: 'ds-knqa-repository-insights',
   templateUrl: './repository-insights.component.html',
   styleUrls: ['./repository-insights.component.scss'],
-  standalone: true,
   imports: [
     AsyncPipe,
     TranslateModule,

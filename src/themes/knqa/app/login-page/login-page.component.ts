@@ -11,7 +11,6 @@ import { LoginPageComponent as BaseComponent } from '../../../../app/login-page/
   selector: 'ds-themed-login-page',
   styleUrls: ['./login-page.component.scss'],
   templateUrl: './login-page.component.html',
-  standalone: true,
   imports: [
     ThemedLogInComponent,
     TranslateModule,
