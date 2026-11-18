@@ -161,6 +161,9 @@ jobs:
       DSPACE_REST_SSL: false
       DSPACE_UI_HOST: 127.0.0.1
       DSPACE_UI_PORT: 4000
+      # DSpace 9.4+ only server-side renders when the request Host matches ui.baseUrl
+      # (CVE-2026-27739). Ignored by older versions, which derive it from host/port.
+      DSPACE_UI_BASEURL: http://127.0.0.1:4000
       DSPACE_CACHE_SERVERSIDE_BOTCACHE_MAX: 0
       DSPACE_CACHE_SERVERSIDE_ANONYMOUSCACHE_MAX: 0
       DSPACE_INFO_ENABLECOOKIECONSENTPOPUP: false
