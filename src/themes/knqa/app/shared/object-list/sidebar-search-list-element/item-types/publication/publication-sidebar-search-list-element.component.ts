@@ -1,4 +1,4 @@
-﻿import {
+import {
   AsyncPipe,
   NgClass,
 } from '@angular/common';

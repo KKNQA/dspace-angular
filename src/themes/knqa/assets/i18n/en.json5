@@ -1,7 +1,282 @@
 {
-  // DSpace default: "All of DSpace"
-  "menu.section.browse_global": "Browse DSpace",
+  // KNQA Digital Repository — English labels. SOURCE OF TRUTH for every KNQA label.
+  // Apply to src/assets/i18n/en.json5 with:
+  //   npx ts-node --project ./tsconfig.ts-node.json scripts/knqa-i18n.ts
+  // Never edit KNQA labels directly in src/assets/i18n/en.json5; upstream updates replace that file.
 
-  // DSpace default: "DSpace Angular :: "
-  "repository.title.prefix": "DSpace :: ",
+  // ---------- Overrides of official DSpace labels ("Community" is presented as "Knowledge Area") ----------
+
+  // DSpace default: "Collection/Community"
+  "admin.access-control.epeople.form.table.collectionOrCommunity": "Collection/Knowledge Area",
+
+  // DSpace default: "Collection/Community"
+  "admin.access-control.groups.table.collectionOrCommunity": "Collection/Knowledge Area",
+
+  // DSpace default: "Community or Collection"
+  "admin.access-control.groups.form.groupCommunity": "Knowledge Area or Collection",
+
+  // DSpace default: "Collection/Community"
+  "admin.access-control.groups.form.subgroups-list.table.collectionOrCommunity": "Collection/Knowledge Area",
+
+  // DSpace default: "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or community, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details."
+  "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or knowledge area, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
+
+  // DSpace default: "Community"
+  "admin.reports.collections.community": "Knowledge Area",
+
+  // DSpace default: "Create a Collection for Community {{ parent }}"
+  "collection.create.sub-head": "Create a Collection for Knowledge Area {{ parent }}",
+
+  // DSpace default: "Community List"
+  "communityList.breadcrumbs": "Knowledge Area List",
+
+  // DSpace default: "Community List"
+  "communityList.tabTitle": "Knowledge Area List",
+
+  // DSpace default: "List of Communities"
+  "communityList.title": "List of Knowledge Areas",
+
+  // DSpace default: "Browse for a community logo"
+  "community.browse.logo": "Browse for a knowledge area logo",
+
+  // DSpace default: "Subcommunities and Collections"
+  "community.subcoms-cols.breadcrumbs": "Sub-Knowledge Areas and Collections",
+
+  // DSpace default: "Create Community"
+  "community.create.breadcrumbs": "Create Knowledge Area",
+
+  // DSpace default: "Create a Community"
+  "community.create.head": "Create a Knowledge Area",
+
+  // DSpace default: "Successfully created the community"
+  "community.create.notifications.success": "Successfully created the knowledge area",
+
+  // DSpace default: "Create a Sub-Community for Community {{ parent }}"
+  "community.create.sub-head": "Create a Sub-Knowledge Area for Knowledge Area {{ parent }}",
+
+  // DSpace default: "Curate Community: {{community}}"
+  "community.curate.header": "Curate Knowledge Area: {{community}}",
+
+  // DSpace default: "Delete Community"
+  "community.delete.head": "Delete Knowledge Area",
+
+  // DSpace default: "Community could not be deleted"
+  "community.delete.notification.fail": "Knowledge Area could not be deleted",
+
+  // DSpace default: "Successfully deleted community"
+  "community.delete.notification.success": "Successfully deleted knowledge area",
+
+  // DSpace default: "Are you sure you want to delete community \"{{ dso }}\""
+  "community.delete.text": "Are you sure you want to delete knowledge area \"{{ dso }}\"",
+
+  // DSpace default: "Delete this community"
+  "community.edit.delete": "Delete this knowledge area",
+
+  // DSpace default: "Edit Community"
+  "community.edit.head": "Edit Knowledge Area",
+
+  // DSpace default: "Edit Community"
+  "community.edit.breadcrumbs": "Edit Knowledge Area",
+
+  // DSpace default: "Community logo"
+  "community.edit.logo.label": "Knowledge Area logo",
+
+  // DSpace default: "Uploading community logo failed. Please verify the content before retrying."
+  "community.edit.logo.notifications.add.error": "Uploading knowledge area logo failed. Please verify the content before retrying.",
+
+  // DSpace default: "Upload community logo successful."
+  "community.edit.logo.notifications.add.success": "Upload knowledge area logo successful.",
+
+  // DSpace default: "Successfully deleted the community's logo"
+  "community.edit.logo.notifications.delete.success.content": "Successfully deleted the knowledge area's logo",
+
+  // DSpace default: "Drop a community logo to upload"
+  "community.edit.logo.upload": "Drop a knowledge area logo to upload",
+
+  // DSpace default: "Successfully edited the community"
+  "community.edit.notifications.success": "Successfully edited the knowledge area",
+
+  // DSpace default: "An error occurred while editing the community"
+  "community.edit.notifications.error": "An error occurred while editing the knowledge area",
+
+  // DSpace default: "Community Edit - Curate"
+  "community.edit.tabs.curate.title": "Knowledge Area Edit - Curate",
+
+  // DSpace default: "Community Edit - Access Control"
+  "community.edit.tabs.access-control.title": "Knowledge Area Edit - Access Control",
+
+  // DSpace default: "Community Edit - Metadata"
+  "community.edit.tabs.metadata.title": "Knowledge Area Edit - Metadata",
+
+  // DSpace default: "Community Edit - Roles"
+  "community.edit.tabs.roles.title": "Knowledge Area Edit - Roles",
+
+  // DSpace default: "Community Edit - Authorizations"
+  "community.edit.tabs.authorizations.title": "Knowledge Area Edit - Authorizations",
+
+  // DSpace default: "Community"
+  "community.listelement.badge": "Knowledge Area",
+
+  // DSpace default: "Community logo"
+  "community.logo": "Knowledge Area logo",
+
+  // DSpace default: "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization)."
+  "comcol-role.edit.community-admin.description": "Knowledge Area administrators can create sub-knowledge areas or collections, and manage or assign management for those sub-knowledge areas or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
+
+  // DSpace default: "Please enter a community name"
+  "community.form.errors.title.required": "Please enter a knowledge area name",
+
+  // DSpace default: "Edit this community"
+  "community.page.edit": "Edit this knowledge area",
+
+  // DSpace default: "Permanent URI for this community"
+  "community.page.handle": "Permanent URI for this knowledge area",
+
+  // DSpace default: "Subcommunities and Collections"
+  "community.all-lists.head": "Sub-Knowledge Areas and Collections",
+
+  // DSpace default: "Collections in this community"
+  "community.sub-collection-list.head": "Collections in this knowledge area",
+
+  // DSpace default: "Communities in this Community"
+  "community.sub-community-list.head": "Knowledge Areas in this Knowledge Area",
+
+  // DSpace default: "New community"
+  "dso-selector.create.community.head": "New knowledge area",
+
+  // DSpace default: "Create a new community in"
+  "dso-selector.create.community.sub-level": "Create a new knowledge area in",
+
+  // DSpace default: "Create a new top-level community"
+  "dso-selector.create.community.top-level": "Create a new top-level knowledge area",
+
+  // DSpace default: "Edit community"
+  "dso-selector.edit.community.head": "Edit knowledge area",
+
+  // DSpace default: "community"
+  "dso-selector.placeholder.type.community": "knowledge area",
+
+  // DSpace default: "Search for a community or collection"
+  "dso-selector.set-scope.community.input-header": "Search for a knowledge area or collection",
+
+  // DSpace default: "Error fetching community"
+  "error.community": "Error fetching knowledge area",
+
+  // DSpace default: "Error fetching sub-communities"
+  "error.sub-communities": "Error fetching sub-knowledge areas",
+
+  // DSpace default: "Error fetching top-level communities"
+  "error.top-level-communities": "Error fetching top-level knowledge areas",
+
+  // DSpace default: "Communities in DSpace"
+  "home.top-level-communities.head": "Knowledge Areas in DSpace",
+
+  // DSpace default: "Select a community to browse its collections."
+  "home.top-level-communities.help": "Select a knowledge area to browse its collections.",
+
+  // DSpace default: "Loading community..."
+  "loading.community": "Loading knowledge area...",
+
+  // DSpace default: "Loading sub-communities..."
+  "loading.sub-communities": "Loading sub-knowledge areas...",
+
+  // DSpace default: "Loading top-level communities..."
+  "loading.top-level-communities": "Loading top-level knowledge areas...",
+
+  // DSpace default: "Please log in to DSpace"
+  "login.form.header": "Sign in to the KNQA Digital Repository",
+
+  // DSpace default: "Repository logo"
+  "menu.header.image.logo": "Kenya National Qualifications Authority logo",
+
+  // DSpace default: "This Community"
+  "menu.section.browse_community": "This Knowledge Area",
+
+  // DSpace default: "All of DSpace"
+  "menu.section.browse_global": "KNQA Repository",
+
+  // DSpace default: "Communities & Collections"
+  "menu.section.browse_global_communities_and_collections": "Knowledge Areas & Collections",
+
+  // DSpace default: "Community"
+  "menu.section.edit_community": "Knowledge Area",
+
+  // DSpace default: "Community"
+  "menu.section.export_community": "Knowledge Area",
+
+  // DSpace default: "Community"
+  "menu.section.new_community": "Knowledge Area",
+
+  // DSpace default: "All of DSpace"
+  "nav.browse.header": "KNQA Repository",
+
+  // DSpace default: "By Community"
+  "nav.community-browse.header": "By Knowledge Area",
+
+  // DSpace default: "Repository logo"
+  "repository.image.logo": "KNQA Digital Repository logo",
+
+  // DSpace default: "DSpace Repository"
+  "repository.title": "KNQA Digital Repository",
+
+  // DSpace default: "DSpace Repository :: "
+  "repository.title.prefix": "KNQA Digital Repository :: ",
+
+  // DSpace default: "Add a new Community policy"
+  "resource-policies.add.for.community": "Add a new Knowledge Area policy",
+
+  // DSpace default: "Policies for Community"
+  "resource-policies.table.headers.title.for.community": "Policies for Knowledge Area",
+
+  // DSpace default: "All of DSpace"
+  "search.form.scope.all": "All of KNQA Repository",
+
+  // DSpace default: "Subscriptions for communities"
+  "subscriptions.community": "Subscriptions for knowledge areas",
+
+  // DSpace default: "You do not have any subscriptions at this time. To subscribe to email updates for a community or collection, use the subscription button on the object's page."
+  "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a knowledge area or collection, use the subscription button on the object's page.",
+
+  // DSpace default: "This form allows you to perform changes to the access conditions of all the items owned by any collection under this community. Changes may be performed to either all Item metadata or all content (bitstreams)."
+  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this knowledge area. Changes may be performed to either all Item metadata or all content (bitstreams).",
+
+  // ---------- KNQA-only labels (theme header, footer and homepage) ----------
+
+  "footer.knqa.blurb": "A centralized platform for the preservation and dissemination of Kenya's national qualification standards, research papers, and official government publications.",
+  "footer.knqa.quicklinks.head": "Quick Links",
+  "footer.knqa.quicklinks.search": "Search Repository",
+  "footer.knqa.quicklinks.communities": "Knowledge Areas & Collections",
+  "footer.knqa.quicklinks.browse": "Browse Publications",
+  "footer.knqa.legal.head": "Legal & Support",
+  "footer.knqa.contact.head": "Contact",
+  "footer.knqa.contact.address1": "KNQA Headquarters,",
+  "footer.knqa.contact.address2": "Upper Hill, Nairobi, Kenya",
+  "footer.knqa.copyright": "© {{ year }} Kenya National Qualifications Authority (KNQA). An Agency of the Government of Kenya.",
+  "home.knqa.hero.title.line1": "Kenya National Qualifications Authority",
+  "home.knqa.hero.title.line2": "Digital Repository",
+  "home.knqa.hero.description": "A centralized platform for the preservation and dissemination of Kenya's national qualification standards, research papers, and official government publications.",
+  "home.knqa.stats.publications": "Publications",
+  "home.knqa.stats.communities": "Knowledge Areas",
+  "home.knqa.stats.collections": "Collections",
+  "home.knqa.browse.head": "Browse Collections",
+  "home.knqa.browse.view-all": "View All Knowledge Areas",
+  "home.knqa.featured.head": "Featured Publications",
+  "home.knqa.featured.download": "Download",
+  "home.knqa.featured.downloads.label": "{{ count }} downloads",
+  "home.knqa.featured.loading": "Loading featured publications...",
+  "home.knqa.featured.empty": "No publications have been deposited yet.",
+  "home.knqa.featured.error": "Something went wrong loading the featured publications.",
+  "home.knqa.insights.head": "Repository Insights",
+  "home.knqa.insights.publications": "Total Publications",
+  "home.knqa.insights.departments": "Departments",
+  "home.knqa.insights.collections": "Collections",
+  "home.knqa.insights.research-papers": "Research Papers",
+  "home.knqa.insights.reports": "Reports",
+  "home.knqa.insights.contributors": "{{ count }} Registered Contributors",
+  "home.knqa.top-collections.head": "Top Collections",
+  "home.knqa.recent.head": "Latest Deposits",
+  "home.knqa.recent.description": "Recently added publications across all categories in the KNQA digital repository.",
+  "home.knqa.recent.today": "Today",
+  "home.knqa.recent.yesterday": "Yesterday",
+  "home.knqa.recent.view-all": "View All Deposits",
 }
