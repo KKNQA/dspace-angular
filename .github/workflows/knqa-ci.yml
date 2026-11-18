@@ -1,0 +1,206 @@
+# KNQA CI: build the KNQA UI and compare it visually with a "before" version.
+#
+# For every change it:
+#   1. builds the "after" commit (with the KNQA i18n check and lint) and the "before" commit;
+#   2. serves each build against a throwaway DSpace backend of the matching version, loaded
+#      with DSpace's demo data and KNQA backend settings (self-registration off);
+#   3. screenshots ~14 pages at 375/768/1280/1440px, checks that the server-rendered title says
+#      KNQA, that no "New user? Register" link appears and that no raw translation keys show;
+#   4. compares before/after pixel by pixel and uploads screenshots + diff images.
+#
+# "Before" is: the base of a pull request; the previous commit for pushes to knqa-theme;
+# the point where other branches left knqa-theme; or the `base_ref` you enter when
+# running it by hand. Branches named upgrade/* only report differences (an upgrade is
+# expected to change pixels); everything else fails above the threshold.
+# See .github/knqa/README.md.
+name: KNQA CI
+
+on:
+  push:
+    branches: [knqa-theme, 'upgrade/**', 'knqa/**', 'gate*/**']
+  pull_request:
+    branches: [knqa-theme]
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: 'Compare against this commit, tag or branch (blank = automatic)'
+        required: false
+        default: ''
+      report_only:
+        description: 'Only report visual differences, never fail on them'
+        type: boolean
+        default: false
+      threshold:
+        description: 'Fail when a screenshot changes by more than this % of its pixels'
+        required: false
+        default: '0.2'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: knqa-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20.x'
+  NODE_OPTIONS: '--max-old-space-size=6144'
+  CYPRESS_INSTALL_BINARY: '0'
+
+jobs:
+  refs:
+    name: Decide what to compare
+    runs-on: ubuntu-latest
+    outputs:
+      base: ${{ steps.r.outputs.base }}
+      head: ${{ steps.r.outputs.head }}
+      report_only: ${{ steps.r.outputs.report_only }}
+      threshold: ${{ steps.r.outputs.threshold }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: r
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_BASE: ${{ inputs.base_ref }}
+          INPUT_REPORT_ONLY: ${{ inputs.report_only }}
+          INPUT_THRESHOLD: ${{ inputs.threshold }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          head=$(git rev-parse HEAD)
+          if [[ -n "$INPUT_BASE" ]]; then
+            git fetch -q origin "$INPUT_BASE" 2>/dev/null || true
+            base=$(git rev-parse --verify "$INPUT_BASE^{commit}" 2>/dev/null || git rev-parse "origin/$INPUT_BASE")
+          elif [[ "$EVENT" == pull_request ]]; then
+            base=$PR_BASE
+          elif [[ "$BRANCH" == knqa-theme ]]; then
+            if [[ -n "$PUSH_BEFORE" && ! "$PUSH_BEFORE" =~ ^0+$ ]] && git cat-file -e "$PUSH_BEFORE^{commit}" 2>/dev/null; then
+              base=$PUSH_BEFORE
+            else
+              base=$(git rev-parse HEAD~1)
+            fi
+          else
+            base=$(git merge-base origin/knqa-theme HEAD)
+          fi
+          report_only=false
+          [[ "$BRANCH" == upgrade/* || "$INPUT_REPORT_ONLY" == true ]] && report_only=true
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "head=$head" >> "$GITHUB_OUTPUT"
+          echo "report_only=$report_only" >> "$GITHUB_OUTPUT"
+          echo "threshold=${INPUT_THRESHOLD:-0.2}" >> "$GITHUB_OUTPUT"
+          {
+            echo "### KNQA CI"
+            echo "- Before: \`$(git log -1 --format='%h %s' "$base")\`"
+            echo "- After: \`$(git log -1 --format='%h %s' "$head")\`"
+            echo "- Visual differences: $([[ $report_only == true ]] && echo 'report only' || echo "fail above ${INPUT_THRESHOLD:-0.2}%")"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  build:
+    name: Build ${{ matrix.side }}
+    needs: refs
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        side: [before, after]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.side == 'before' && needs.refs.outputs.base || needs.refs.outputs.head }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: KNQA labels are applied (scripts/knqa-i18n.ts --check)
+        if: matrix.side == 'after'
+        run: |
+          if [[ -f scripts/knqa-i18n.ts ]]; then
+            npx ts-node --project ./tsconfig.ts-node.json scripts/knqa-i18n.ts --check
+          else
+            echo "::warning::scripts/knqa-i18n.ts not found; skipping"
+          fi
+      - name: Lint (informational)
+        if: matrix.side == 'after'
+        continue-on-error: true
+        run: npm run build:lint && npm run lint:nobuild -- --quiet
+      - name: Production build
+        run: npm run build:prod
+      - name: Package build
+        run: tar czf dist-${{ matrix.side }}.tgz dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.side }}
+          path: dist-${{ matrix.side }}.tgz
+          retention-days: 3
+
+  visual:
+    name: Visual comparison
+    needs: [refs, build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      DSPACE_REST_HOST: 127.0.0.1
+      DSPACE_REST_PORT: 8080
+      DSPACE_REST_NAMESPACE: /server
+      DSPACE_REST_SSL: false
+      DSPACE_UI_HOST: 127.0.0.1
+      DSPACE_UI_PORT: 4000
+      DSPACE_CACHE_SERVERSIDE_BOTCACHE_MAX: 0
+      DSPACE_CACHE_SERVERSIDE_ANONYMOUSCACHE_MAX: 0
+      DSPACE_INFO_ENABLECOOKIECONSENTPOPUP: false
+    steps:
+      - name: Check out "after" (also provides the KNQA CI scripts)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.refs.outputs.head }}
+          path: after
+      - name: Check out "before"
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.refs.outputs.base }}
+          path: before
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: dist-*
+          merge-multiple: true
+      - name: Unpack builds
+        run: |
+          tar xzf dist-before.tgz -C before
+          tar xzf dist-after.tgz -C after
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install screenshot tools
+        run: npm install --prefix after/.github/knqa/visual --no-audit --no-fund
+      - name: Screenshot "before"
+        run: bash after/.github/knqa/run-side.sh before shots/before
+      - name: Screenshot "after"
+        run: bash after/.github/knqa/run-side.sh after shots/after
+      - name: Content checks on "after"
+        run: |
+          node -e '
+            const r = require("./shots/after/report.json");
+            let bad = false;
+            if (!r.loggedIn) { console.log("::error::Could not log in through the UI"); bad = true; }
+            if (r.registerLinkSeen.length) { console.log("::error::Self-registration link visible on: " + r.registerLinkSeen.join(", ")); bad = true; }
+            for (const [p, keys] of Object.entries(r.rawKeys)) { console.log("::warning::Untranslated label(s) on " + p + ": " + keys.join(", ")); }
+            process.exit(bad ? 1 : 0);
+          '
+      - name: Compare before/after
+        id: compare
+        continue-on-error: ${{ needs.refs.outputs.report_only == 'true' }}
+        run: node after/.github/knqa/visual/compare.js shots/before shots/after shots/diff "${{ needs.refs.outputs.threshold }}" "$GITHUB_STEP_SUMMARY"
+      - name: Upload screenshots and diffs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: knqa-screenshots
+          path: shots
+          retention-days: 14
+      - name: Backend logs (on failure)
+        if: failure()
+        run: docker compose -p knqaci logs --tail=300 dspace || true

@@ -1,0 +1,10 @@
+{
+  "name": "knqa-visual-regression",
+  "private": true,
+  "description": "KNQA CI: screenshot the UI before and after a change and compare (see .github/knqa/README.md)",
+  "dependencies": {
+    "pixelmatch": "5.3.0",
+    "pngjs": "7.0.0",
+    "puppeteer-core": "24.43.1"
+  }
+}

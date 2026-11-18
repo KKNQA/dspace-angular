@@ -1,0 +1,7 @@
+# KNQA CI override, layered on top of docker/docker-compose-ci.yml (upstream).
+# Applies KNQA backend settings to the throwaway CI backend.
+services:
+  dspace:
+    environment:
+      # Same as dspace-backend/dspace/config/local.cfg.knqa-production.EXAMPLE
+      user__P__registration: 'false'
