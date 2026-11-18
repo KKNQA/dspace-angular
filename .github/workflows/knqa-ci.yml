@@ -126,9 +126,21 @@ jobs:
       - name: Lint (informational)
         if: matrix.side == 'after'
         continue-on-error: true
-        run: npm run build:lint && npm run lint:nobuild -- --quiet
+        run: |
+          set -o pipefail
+          npm run build:lint && npm run lint:nobuild -- --quiet 2>&1 | tee lint.log || {
+            # Public annotation (logs need a GitHub login)
+            echo "::warning title=Lint problems::$(grep -E '^\s+[0-9]+:[0-9]+\s+error|^/' lint.log | head -40 | sed 's/$/%0A/' | tr -d '\n')"
+            exit 1
+          }
       - name: Production build
-        run: npm run build:prod
+        run: |
+          set -o pipefail
+          npm run build:prod 2>&1 | tee build.log || {
+            # Public annotation (logs need a GitHub login)
+            echo "::error title=Build failed (${{ matrix.side }})::$(grep -E 'ERROR|Error:|error TS|error NG|✘' build.log | head -40 | sed 's/%/%25/g; s/$/%0A/' | tr -d '\n')"
+            exit 1
+          }
       - name: Package build
         run: tar czf dist-${{ matrix.side }}.tgz dist
       - uses: actions/upload-artifact@v4
