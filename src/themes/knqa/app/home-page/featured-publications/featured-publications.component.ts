@@ -28,8 +28,6 @@ import {
 import { BitstreamDataService } from '../../../../../app/core/data/bitstream-data.service';
 import { PaginatedList } from '../../../../../app/core/data/paginated-list.model';
 import { RemoteData } from '../../../../../app/core/data/remote-data';
-import { UsageReport } from '../../../../../app/core/statistics/models/usage-report.model';
-import { UsageReportDataService } from '../../../../../app/core/statistics/usage-report-data.service';
 import { Bitstream } from '../../../../../app/core/shared/bitstream.model';
 import { DSpaceObjectType } from '../../../../../app/core/shared/dspace-object-type.model';
 import { Item } from '../../../../../app/core/shared/item.model';
@@ -38,6 +36,8 @@ import {
   toDSpaceObjectListRD,
 } from '../../../../../app/core/shared/operators';
 import { SearchService } from '../../../../../app/core/shared/search/search.service';
+import { UsageReport } from '../../../../../app/core/statistics/models/usage-report.model';
+import { UsageReportDataService } from '../../../../../app/core/statistics/usage-report-data.service';
 import { getItemPageRoute } from '../../../../../app/item-page/item-page-routing-paths';
 import { fadeIn } from '../../../../../app/shared/animations/fade';
 import { ErrorComponent } from '../../../../../app/shared/error/error.component';
@@ -99,7 +99,6 @@ export interface FeaturedPublication {
   templateUrl: './featured-publications.component.html',
   styleUrls: ['./featured-publications.component.scss'],
   animations: [fadeIn],
-  standalone: true,
   imports: [
     AsyncPipe,
     DatePipe,

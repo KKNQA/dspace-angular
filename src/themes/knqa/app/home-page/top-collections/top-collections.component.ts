@@ -51,7 +51,6 @@ export interface RankedCollection {
   selector: 'ds-knqa-top-collections',
   templateUrl: './top-collections.component.html',
   styleUrls: ['./top-collections.component.scss'],
-  standalone: true,
   imports: [
     AsyncPipe,
     RouterLink,

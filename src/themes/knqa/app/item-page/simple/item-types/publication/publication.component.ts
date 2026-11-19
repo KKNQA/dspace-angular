@@ -33,7 +33,6 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
   styleUrls: ['./publication.component.scss'],
   templateUrl: './publication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     AsyncPipe,
     CollectionsComponent,
