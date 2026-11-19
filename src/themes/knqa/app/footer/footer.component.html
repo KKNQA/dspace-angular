@@ -62,19 +62,6 @@
       <p class="m-0 text-center">
         {{ 'footer.knqa.copyright' | translate:{year: dateObj | date:'y'} }}
       </p>
-      <p class="m-0 text-center footer-attribution">
-        <a href="http://www.dspace.org/" role="link" tabindex="0">{{ 'footer.link.dspace' | translate }}</a>
-        {{ 'footer.copyright' | translate:{year: dateObj | date:'y'} }}
-        <a href="https://www.lyrasis.org/" role="link" tabindex="0">{{ 'footer.link.lyrasis' | translate }}</a>
-      </p>
     </div>
-    @if (coarLdnEnabled$ | async) {
-      <div class="notify-enabled text-white align-self-md-end pb-2">
-        <a class="coar-notify-support-route" routerLink="info/coar-notify-support" role="link" tabindex="0">
-          <img class="n-coar" src="assets/images/n-coar.svg" [attr.alt]="'menu.header.image.logo' | translate" />
-          {{ 'footer.link.coar-notify-support' | translate }}
-        </a>
-      </div>
-    }
   </div>
 </footer>

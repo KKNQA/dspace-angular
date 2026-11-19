@@ -10,7 +10,7 @@ import { FooterComponent as BaseComponent } from '../../../../app/footer/footer.
 
 /**
  * KNQA footer: light-tinted band with brand blurb, quick links and contact details,
- * plus a navy bottom bar with the government attribution and legal links.
+ * plus a navy bottom bar with the KNQA copyright line.
  */
 @Component({
   selector: 'ds-themed-footer',
