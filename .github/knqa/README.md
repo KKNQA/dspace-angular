@@ -13,6 +13,14 @@ DSpace file is modified, so upgrades merge cleanly.
    UI (`package.json` 9.1.0 → Docker images `dspace-9.1`). It loads DSpace's demo data and
    `docker-compose.knqa-ci.yml` (self-registration off). If the versions differ (an
    upgrade), each side gets its own matching backend.
+   It also mounts KNQA's backend config from [KKNQA/DSpace](https://github.com/KKNQA/DSpace)
+   (`submission-forms.xml`, the `knqa_types` document-type vocabulary, the OAI crosswalk):
+   "before" uses branch `knqa-backend`; "after" uses the KKNQA/DSpace branch **with the same
+   name as this branch** if one exists (otherwise `knqa-backend`). So a change that needs both
+   repos is tested by pushing branches with the same name to both. The files are only used when
+   their DSpace version matches the backend image.
+   After the screenshots, typing "occup" in Describe → Type must offer "Occupational standard"
+   (a warning, not a failure, if not).
 3. **Screenshots:** `run-side.sh` serves each build with SSR and checks that the
    server-rendered title contains "KNQA". `visual/capture.js` photographs about 14 pages
    (home, Knowledge Areas, community, collection, item, search, browse, login, MyDSpace,

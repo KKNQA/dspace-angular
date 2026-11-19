@@ -80,6 +80,28 @@ async function settle(page) {
   report.loggedIn = await page.evaluate(() => !/log\s*in/i.test(document.querySelector('header')?.innerText || 'log in'));
   for (const [n, u] of pages.authed) { await shoot(n, u); }
 
+  // Describe > Type: does typing "occup" offer the KNQA type "Occupational standard"?
+  // (Only meaningful when the backend runs the KNQA submission config; see backend.sh.)
+  const sub = pages.authed.find(([n]) => n === 'submission');
+  if (sub) {
+    current = 'type-field@1280';
+    await page.setViewport({ width: 1280, height: 900 });
+    await page.goto(UI + sub[1], { waitUntil: 'domcontentloaded', timeout: 90000 });
+    await settle(page);
+    const input = await page.$('input#dc_type, input[id^="dc_type"]');
+    report.typeField = { input: !!input, suggestions: [] };
+    if (input) {
+      await input.click({ clickCount: 3 });
+      await input.type('occup', { delay: 50 });
+      await sleep(3000);
+      report.typeField.suggestions = await page.evaluate(() =>
+        [...document.querySelectorAll('ngb-typeahead-window button, .dropdown-menu.show button, .dropdown-menu.show li')]
+          .map((b) => (b.innerText || '').trim()).filter(Boolean).slice(0, 10));
+      fs.mkdirSync(path.join(OUT, 'probe'), { recursive: true });
+      await page.screenshot({ path: path.join(OUT, 'probe', 'type-field@1280.png') });
+    }
+  }
+
   fs.writeFileSync(path.join(OUT, 'report.json'), JSON.stringify(report, null, 2));
   console.log(JSON.stringify({
     screenshots: fs.readdirSync(OUT).filter((f) => f.endsWith('.png')).length,

@@ -203,6 +203,11 @@ jobs:
             if (!r.loggedIn) { console.log("::error::Could not log in through the UI"); bad = true; }
             if (r.registerLinkSeen.length) { console.log("::error::Self-registration link visible on: " + r.registerLinkSeen.join(", ")); bad = true; }
             for (const [p, keys] of Object.entries(r.rawKeys)) { console.log("::warning::Untranslated label(s) on " + p + ": " + keys.join(", ")); }
+            const t = r.typeField;
+            if (!t) { console.log("::warning title=Type field::Submission page not checked"); }
+            else if (!t.input) { console.log("::warning title=Type field::Describe > Type input not found on the submission page"); }
+            else if (!t.suggestions.some((s) => /Occupational standard/i.test(s))) { console.log("::warning title=Type field::Typing \"occup\" did not offer \"Occupational standard\" (offered: " + (t.suggestions.join("; ") || "nothing") + ")"); }
+            else { console.log("::notice title=Type field::Typing \"occup\" offers: " + t.suggestions.join("; ")); }
             process.exit(bad ? 1 : 0);
           '
       - name: Compare before/after

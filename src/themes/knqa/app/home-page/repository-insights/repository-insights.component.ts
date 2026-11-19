@@ -24,11 +24,33 @@ import { PaginationComponentOptions } from '../../../../../app/shared/pagination
 import { PaginatedSearchOptions } from '../../../../../app/shared/search/models/paginated-search-options.model';
 
 /**
- * The `dc.type` values behind the two publication-kind tiles. Change these to
- * match the vocabulary your submission forms actually use.
+ * The KNQA document types (`dc.type`, from the backend vocabulary
+ * dspace/config/controlled-vocabularies/knqa_types.xml) counted by the two
+ * publication-kind tiles. Labels must match the vocabulary exactly.
  */
-export const RESEARCH_PAPER_TYPE = 'Article';
-export const REPORT_TYPE = 'Report';
+export const RESEARCH_PAPER_TYPES = [
+  'Journal article',
+  'Research report',
+  'Working paper',
+  'Discussion paper',
+  'Policy brief',
+  'Conference paper',
+  'Thesis',
+];
+export const REPORT_TYPES = [
+  'Annual report',
+  'Performance report',
+  'Accreditation report',
+  'Quality audit report',
+  'Evaluation report',
+  'Survey report',
+  'Audit report',
+];
+
+/** Discovery query matching any of the given `dc.type` values. */
+export function typeQuery(types: string[]): string {
+  return `dc.type:(${types.map((t) => `"${t.replace(/"/g, '\\"')}"`).join(' OR ')})`;
+}
 
 /**
  * The metadata browse index the contributor count is read from.
@@ -71,8 +93,8 @@ export class RepositoryInsightsComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalItems$ = this.countItems('knqa-insights-items');
-    this.totalResearchPapers$ = this.countItems('knqa-insights-papers', `dc.type:"${RESEARCH_PAPER_TYPE}"`);
-    this.totalReports$ = this.countItems('knqa-insights-reports', `dc.type:"${REPORT_TYPE}"`);
+    this.totalResearchPapers$ = this.countItems('knqa-insights-papers', typeQuery(RESEARCH_PAPER_TYPES));
+    this.totalReports$ = this.countItems('knqa-insights-reports', typeQuery(REPORT_TYPES));
 
     this.totalCommunities$ = this.communityDataService.findAll({ elementsPerPage: 1 }).pipe(
       getFirstCompletedRemoteData(),

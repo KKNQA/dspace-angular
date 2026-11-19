@@ -8,10 +8,10 @@ mkdir -p "$2"
 OUT=$(cd "$2" && pwd)
 HERE=$(cd "$(dirname "$0")" && pwd)
 
-"$HERE/backend.sh" "$UI_DIR"
-VER=$(cat "$RUNNER_TEMP/knqa-backend-version")
+"$HERE/backend.sh" "$UI_DIR" "$(basename "$UI_DIR")"
+VER=$(tr -c 'A-Za-z0-9.-' '_' < "$RUNNER_TEMP/knqa-backend-version")
 
-# One page list (and one draft submission) per backend, shared by both sides
+# One page list (and one draft submission) per backend; shared by both sides when they use the same backend
 PAGES="$RUNNER_TEMP/pages-$VER.json"
 [[ -f "$PAGES" ]] || node "$HERE/visual/prepare.js" "$PAGES"
 
