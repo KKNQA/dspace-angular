@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer-core');
 const [PAGES, OUT, I18N] = process.argv.slice(2);
 const UI = process.env.KNQA_UI_URL || 'http://127.0.0.1:4000';
 const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
-const WIDTHS = [375, 768, 1280, 1440];
+const WIDTHS = (process.env.KNQA_WIDTHS || '375,768,1280,1440').split(',').map(Number);
 const NO_MOTION = '*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}';
 
 const pages = JSON.parse(fs.readFileSync(PAGES, 'utf8'));

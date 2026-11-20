@@ -55,3 +55,12 @@ build, and every screenshot must be identical to `knqa-theme`.
 Merge the release tag on `upgrade/<version>` and push. The run builds the upgraded UI,
 serves it against a backend of the new version, and shows every visual difference from
 the current KNQA site, for review against the regression checklist.
+
+## Speed
+
+- Each commit is built once. A build is cached under its commit and reused when the same commit is
+  "before" again (every later push to a branch reuses its base's build). GitHub only shares caches
+  from the repository's default branch with other branches, so set the default branch to
+  `knqa-theme` (Settings → General) to also reuse knqa-theme's builds on new branches.
+- Review branches are photographed at 375 and 1280 px; `knqa-theme` and `upgrade/*` at all four widths.
+- Commits that only change Markdown files don't start a run.
