@@ -6,3 +6,4 @@ services:
       # Same as dspace-backend/dspace/config/local.cfg.knqa-production.EXAMPLE
       user__P__registration: 'false'
       vocabulary__P__plugin__P__knqa_types__P__hierarchy__P__store: 'false'
+      vocabulary__P__plugin__P__knqa_types__P__hierarchy__P__preloadLevel: '2'

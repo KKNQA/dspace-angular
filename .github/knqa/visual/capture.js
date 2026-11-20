@@ -91,14 +91,30 @@ async function settle(page) {
     const input = await page.$('input#dc_type, input[id^="dc_type"]');
     report.typeField = { input: !!input, suggestions: [] };
     if (input) {
-      await input.click({ clickCount: 3 });
-      await input.type('occup', { delay: 50 });
-      await sleep(3000);
-      report.typeField.suggestions = await page.evaluate(() =>
-        [...document.querySelectorAll('ngb-typeahead-window button, .dropdown-menu.show button, .dropdown-menu.show li')]
-          .map((b) => (b.innerText || '').trim()).filter(Boolean).slice(0, 10));
       fs.mkdirSync(path.join(OUT, 'probe'), { recursive: true });
-      await page.screenshot({ path: path.join(OUT, 'probe', 'type-field@1280.png') });
+      // A grouped vocabulary opens a picker (search box above the tree) when the field is clicked;
+      // a flat one offers type-ahead in the field itself.
+      await input.click();
+      await sleep(2500);
+      const search = await page.$('ds-vocabulary-treeview input[type="text"], .modal-content input[type="text"]');
+      if (search) {
+        report.typeField.picker = true;
+        await page.screenshot({ path: path.join(OUT, 'probe', 'type-picker@1280.png') });
+        await search.type('occup', { delay: 50 });
+        await page.keyboard.press('Enter');
+        await sleep(3000);
+        report.typeField.suggestions = await page.evaluate(() =>
+          [...document.querySelectorAll('ds-vocabulary-treeview .tree-item, ds-vocabulary-treeview button, ds-vocabulary-treeview span')]
+            .map((b) => (b.innerText || '').trim()).filter((t) => t && t.length < 80)
+            .filter((t, i, a) => a.indexOf(t) === i).slice(0, 15));
+      } else {
+        await input.type('occup', { delay: 50 });
+        await sleep(3000);
+        report.typeField.suggestions = await page.evaluate(() =>
+          [...document.querySelectorAll('ngb-typeahead-window button, .dropdown-menu.show button, .dropdown-menu.show li')]
+            .map((b) => (b.innerText || '').trim()).filter(Boolean).slice(0, 10));
+      }
+      await page.screenshot({ path: path.join(OUT, 'probe', 'type-search@1280.png') });
     }
   }
 

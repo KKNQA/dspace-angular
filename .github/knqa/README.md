@@ -19,8 +19,9 @@ DSpace file is modified, so upgrades merge cleanly.
    name as this branch** if one exists (otherwise `knqa-backend`). So a change that needs both
    repos is tested by pushing branches with the same name to both. The files are only used when
    their DSpace version matches the backend image.
-   After the screenshots, typing "occup" in Describe → Type must offer "Occupational standard"
-   (a warning, not a failure, if not).
+   After the screenshots, it clicks Describe → Type, searches "occup" in the picker and expects
+   "Occupational standard" (a warning, not a failure, if not). Screenshots of the picker are in
+   the `probe/` folder of the screenshots download.
 3. **Screenshots:** `run-side.sh` serves each build with SSR and checks that the
    server-rendered title contains "KNQA". `visual/capture.js` photographs about 14 pages
    (home, Knowledge Areas, community, collection, item, search, browse, login, MyDSpace,
