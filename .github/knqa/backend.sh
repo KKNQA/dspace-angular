@@ -80,6 +80,14 @@ docker compose -f "$UI_DIR/docker/cli.yml" -f "$UI_DIR/docker/cli.assetstore.yml
 
 echo "$KEY" > "$STATE"
 curl -s http://127.0.0.1:8080/server/api | grep -E '"dspace(Version|Name)"'
-if curl -sf "http://127.0.0.1:8080/server/api/submission/vocabularies/knqa_types" > /dev/null; then
-  echo "KNQA document-type vocabulary loaded"
-fi
+# Public annotation: is the KNQA document-type vocabulary served, and does a search find a type?
+API=http://127.0.0.1:8080/server/api/submission/vocabularies/knqa_types
+VOC=$(curl -s "$API" || true)
+ENT=$(curl -s "$API/entries?filter=occup&size=5" || true)
+SUMMARY=$(VOC="$VOC" ENT="$ENT" node -e '
+  const j = (s) => { try { return JSON.parse(s); } catch { return null; } };
+  const v = j(process.env.VOC), e = j(process.env.ENT);
+  const voc = v && v.name ? `name=${v.name} hierarchical=${v.hierarchical} preloadLevel=${v.preloadLevel} scrollable=${v.scrollable}` : "not served (" + (process.env.VOC || "").slice(0, 120) + ")";
+  const ent = e && e._embedded ? (e._embedded.entries || []).map((x) => x.display).join("; ") || "no matches" : (process.env.ENT || "").slice(0, 160);
+  console.log(`vocabulary: ${voc} | search "occup": ${ent}`);')
+echo "::notice title=KNQA vocabulary ($SIDE, $REF)::$SUMMARY"

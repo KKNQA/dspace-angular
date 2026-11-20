@@ -206,7 +206,7 @@ jobs:
             const t = r.typeField;
             if (!t) { console.log("::warning title=Type field::Submission page not checked"); }
             else if (!t.input) { console.log("::warning title=Type field::Describe > Type input not found on the submission page"); }
-            else if (!t.suggestions.some((s) => /Occupational standard/i.test(s))) { console.log("::warning title=Type field::Typing \"occup\" did not offer \"Occupational standard\" (offered: " + (t.suggestions.join("; ") || "nothing") + ")"); }
+            else if (!t.suggestions.some((s) => /Occupational standard/i.test(s))) { console.log("::warning title=Type field::Searching \"occup\" did not offer \"Occupational standard\" (picker opened: " + !!t.picker + "; offered: " + (t.suggestions.join("; ") || "nothing") + "; picker text: " + (t.pickerText || "-") + ")"); }
             else { console.log("::notice title=Type field::Typing \"occup\" offers: " + t.suggestions.join("; ")); }
             process.exit(bad ? 1 : 0);
           '

@@ -103,6 +103,9 @@ async function settle(page) {
         await search.type('occup', { delay: 50 });
         await page.keyboard.press('Enter');
         await sleep(3000);
+        report.typeField.pickerText = await page.evaluate(() =>
+          ((document.querySelector('ds-vocabulary-treeview') || document.querySelector('.modal-content') || {}).innerText || '')
+            .replace(/\s+/g, ' ').slice(0, 400));
         report.typeField.suggestions = await page.evaluate(() =>
           [...document.querySelectorAll('ds-vocabulary-treeview .tree-item, ds-vocabulary-treeview button, ds-vocabulary-treeview span')]
             .map((b) => (b.innerText || '').trim()).filter((t) => t && t.length < 80)
